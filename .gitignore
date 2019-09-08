@@ -1,0 +1,7 @@
+*.dbmdl
+*.jfm
+*.suo
+/.vs/config/applicationhost.config
+*.cache
+.vs/slnx.sqlite
+.vs/VSWorkspaceState.json

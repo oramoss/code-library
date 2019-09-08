@@ -1,0 +1,12 @@
+[Unit]
+Description="Schema Registry - metadata serving layer for Kafka"
+Requires=kafka.service
+After=kafka.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/schema-registry-start ./etc/schema-registry/schema-registry.properties
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

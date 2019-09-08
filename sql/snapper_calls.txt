@@ -1,0 +1,27 @@
+@snapper ash,stats 10 5 4159
+@snapper ash,stats 30 1 "select sid from gv$px_session where qcsid=3870 and inst_id=1"
+
+--      @snapper ash,stats 1 1 515
+--      (Output one 1-second snapshot of session 515 using dbms_output and exit
+--       Wait, v$sesstat and v$sess_time_model statistics are reported by default
+--       Starting from V3 the ASH style session activity report is shown as well)
+--
+--      @snapper stats,gather=w 1 1 515
+--      (Output one 1-second snapshot of session 515 using dbms_output and exit
+--       only Wait event statistics are reported, no ASH)
+--
+--      @snapper ash,gather=st 1 1 515
+--      (Output one 1-second snapshot of session 515 using dbms_output and exit
+--       only v$sesstat and v$sess_Time_model statistics are gathered + ASH)
+--
+--      @snapper trace,ash,gather=stw,pagesize=0 10 90 117,210,313
+--      (Write 90 10-second snapshots into tracefile for session IDs 117,210,313
+--       all statistics are reported, do not print any headers)
+--
+--      @snapper trace,ash 900 999999999 "select sid from v$session"
+--      (Take a snapshot of ALL sessions every 15 minutes and write the output to trace,
+--       loop (almost) forever )
+--
+--      @snapper out,trace 300 12 "select sid from v$session where username='APPS'"
+--      (Take 12 5-minute snapshots of all sessions belonging to APPS user, write
+--       output to both dbms_output and tracefile)

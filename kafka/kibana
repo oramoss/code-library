@@ -1,0 +1,117 @@
+#!/bin/bash
+# chkconfig: 234 20 80
+# description: Kibana basic start/shutdown script
+#
+# @author Cameron Gregory, http://www.bloke.com/
+
+
+APP_HOME=/opt/kibana
+APP_USER=root
+SHUTDOWN_WAIT=20
+NAME="$(basename $0)"
+unset ISBOOT
+if [ "${NAME:0:1}" = "S" -o "${NAME:0:1}" = "K" ]; then
+    NAME="${NAME:3}"
+    ISBOOT="1"
+fi
+
+# Get instance specific config file
+if [ -r "/etc/sysconfig/${NAME}" ]; then
+    . /etc/sysconfig/${NAME}
+fi
+
+app_pid() {
+echo `ps aux | grep "./bin/../node/bin/node ./bin/../src/cli -c /opt/kibana/config/kibana.yml"  | grep -v grep | awk '{ print $2 }'`
+}
+
+start() {
+        pid=$(app_pid)
+        if [ -n "$pid" ]; then
+                echo "${NAME} already running (pid: $pid)"
+        else
+                echo -n "Starting ${NAME}: "
+                cd $APP_HOME
+                su ${APP_USER} -c "./bin/kibana -c /opt/kibana/config/kibana.yml" >> /var/log/${NAME}.log 2>&1 &
+                echo "done."
+        fi
+        return 0;
+}
+stop() {
+        pid=$(app_pid)
+        if [ -n "$pid" ]; then
+                echo -n "Shutting down ${NAME}: "
+                cd $APP_HOME
+                kill $pid
+                let kwait=$SHUTDOWN_WAIT
+                count=0;
+                until [ `ps -p $pid | grep -c $pid` = '0' ] || [ $count -gt $kwait ]; do
+                        echo -n -e "\nwaiting for processes to exit";
+                        sleep 1
+                        let count=$count+1;
+                done
+                if [ $count -gt $kwait ]; then
+                        echo -e "\nkilling processes which didn't stop after $SHUTDOWN_WAIT seconds"
+                        kill -9 $pid
+                        sleep 1
+                else
+                        echo " Done"
+                fi
+        else
+                echo "${NAME} is not running"
+        fi
+
+        return 0
+}
+abort() {
+        pid=$(app_pid)
+        if [ -n "$pid" ]; then
+                echo -n "Shutting down ${NAME}: "
+                cd $APP_HOME
+                kill $pid
+                let kwait=1
+                count=0;
+                until [ `ps -p $pid | grep -c $pid` = '0' ] || [ $count -ge $kwait ]; do
+                        echo -n -e "\nwaiting for processes to exit";
+                        sleep 1
+                        let count=$count+1;
+                done
+                if [ $count -ge $kwait ]; then
+                        echo -e "\nkilling processes which didn't stop after $kwait seconds"
+                        kill -9 $pid
+                        sleep 1
+                else
+                        echo " Done"
+                fi
+        else
+                echo "${NAME} is not running"
+        fi
+
+        return 0
+}
+case "$1" in
+        start)
+                start
+                ;;
+        stop)
+                stop
+                ;;
+        abort)
+                abort
+                ;;
+        restart)
+                stop
+                start
+                ;;
+        status)
+                pid=$(app_pid)
+                if [ -n "$pid" ]; then
+                        echo "${NAME} is running with pid: $pid"
+                else
+                        echo "${NAME} is not running"
+                fi
+                ;;
+        *)
+                echo "Usage: $0 {start|stop|restart|status|abort}"
+esac
+exit 0
+

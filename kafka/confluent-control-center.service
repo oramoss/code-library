@@ -1,0 +1,12 @@
+[Unit]
+Description="Confluent Control Center - for managing Confluent"
+Requires=schema-registry.service kafka.service
+After=schema-registry.service kafka.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/control-center-start ./etc/confluent-control-center/control-center.properties
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

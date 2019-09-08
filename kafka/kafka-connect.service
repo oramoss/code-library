@@ -1,0 +1,12 @@
+[Unit]
+Description="Kafka Connect - tool for scalably and reliably streaming data from kafka to other systems"
+Requires=schema-registry.service kafka.service
+After=schema-registry.service kafka.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/connect-distributed ./etc/schema-registry/connect-distributed.properties
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
