@@ -4,7 +4,7 @@ $sqlservers = Get-AzResource -ResourceType Microsoft.Sql/servers
 foreach ($sqlserver in $sqlservers)
 {
     $sqlserver.Name
-    $databases = Get-AzResource -ResourceType Microsoft.Sql/servers/databases|Where-Object {$_.Name -notlike "*master"}|Where-Object {$_.Name -like $r.Name + "/*"}
+    $databases = Get-AzResource -ResourceType Microsoft.Sql/servers/databases|Where-Object {$_.Name -notlike "*master"}|Where-Object {$_.Name -like $sqlserver.Name + "/*"}
 	"Database Count:" + $databases.Count
 	"Databases..."
 	">>>" + $databases.Name
