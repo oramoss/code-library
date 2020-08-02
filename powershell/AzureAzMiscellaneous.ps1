@@ -11,3 +11,9 @@ az network vnet check-ip-address --resource-group $RgName --name $vnetName --ip-
 
 # Find list of NICs and their details (no filtering!)
 az network nic list 
+
+# Set the subscription
+az account set --subscription <subscription name or id>
+
+# List editions for sql db in a location
+az sql db list-editions -l uksouth -o table
