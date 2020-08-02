@@ -11,13 +11,3 @@ az network vnet check-ip-address --resource-group $RgName --name $vnetName --ip-
 
 # Find list of NICs and their details (no filtering!)
 az network nic list 
-
-# Get a list of Azure Resources
-Get-AzureRmResource | ft
-
-# Get list of subscriptions
-Get-AzureRmSubscription
-
-# Set the subscription using subscription ID
-Select-AzureRmSubscription -SubscriptionId xxxxx-xxxxx-xxxxxx-xxxx
-
