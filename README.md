@@ -13,12 +13,32 @@ Here you will find various pieces of code, documentation and links across numero
 - [Links](#Links)
 
 ## Software
-- [Kafka](./kafka/README.md)
-- [Powershell](./powershell/README.md)
-- [Shell](./shell/README.md)
-- [SQL](./sql/README.md)
+- [Kafka](./kafka/kafka.md)
+- [Powershell](./powershell/powershell.md)
+- [Shell](./shell/shell.md)
+- [SQL](./sql/sql.md)
 
 ## Links
+### Microsoft
+- [Azure CLI](./links/az-cli.md)
+- [Azure Data Factory (ADF)](./links/azure-adf.md)
+- [Azure DevOps](./links/ado.md)
+- [Azure Instrumentation](./links/azure-instrumentation.md)
+- [Azure Key Vault](./links/azure-keyvault.md)
+- [Azure Logic Apps](./links/azure-logic-apps.md)
+- [Azure Networking](./links/azure-networking.md)
+- [Azure Portal](./links/azure-portal.md)
+- [Azure Resource Manager(ARM)](./links/arm.md)
+- [Azure SQL Database](./links/azure-ms-sql-db.md)
+- [Azure Synapse](./links/azure-synapse.md)
+- [Azure Windows Virtual Desktop](./links/azure-wvd.md)
+- [APIs](./links/api.md)
+- [Powershell](./links/powershell.md)
+- [Visual Studio](./links/vs.md)
+### General
+- [General Networking](./links/general-networking.md)
+### Training
+- [Training](./links/training.md)
 
 ## Contact
 Contact our Director, Jeff Moss directly via [LinkedIn](https://www.linkedin.com/in/oramoss/) or jeff.moss@oramoss.com
