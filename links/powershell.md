@@ -9,3 +9,4 @@ Links related to Powershell.
 
 ## Techniques
 - [Strings in PowerShell - Replace, compare, concatenate, split, substring](https://4sysops.com/archives/strings-in-powershell-replace-compare-concatenate-split-substring/)
+- [How To Test PowerShell Scripts With WhatIf](https://www.pluralsight.com/blog/software-development/test-powershell-with-whatif)

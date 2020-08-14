@@ -8,4 +8,6 @@ Links related to Key Vault.
 
 ## Soft Delete
 - [How to use Key Vault soft-delete with PowerShell](https://docs.microsoft.com/en-us/azure/key-vault/general/soft-delete-powershell)
- 
+
+## Accessibility
+- [Azure API Management, Key Vault and Managed Identities](https://madeofstrings.com/2019/06/13/azure-api-management-key-vault-and-managed-identities/)

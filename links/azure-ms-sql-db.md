@@ -8,3 +8,9 @@ Links related to Microsoft SQL Database.
 ## Networking
 - [Azure Private Link for Azure SQL Database and Azure Synapse Analytics](https://docs.microsoft.com/en-gb/azure/azure-sql/database/private-endpoint-overview)
 - [Azure SQL Database and Azure Synapse Analytics connectivity architecture](https://docs.microsoft.com/en-gb/azure/sql-database/sql-database-connectivity-architecture#connection-policy)
+
+## SQL
+- [SQL Injection](https://docs.microsoft.com/en-us/sql/relational-databases/security/sql-injection?view=sql-server-ver15)
+
+## Security
+- [Tutorial: Use a Windows VM system-assigned managed identity to access Azure SQL](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-sql#create-a-group-in-azure-ad-and-make-the-vms-system-assigned-managed-identity-a-member-of-the-group)

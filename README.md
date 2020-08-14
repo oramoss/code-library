@@ -24,11 +24,13 @@ Here you will find various pieces of code, documentation and links across numero
 - [Azure Data Factory (ADF)](./links/azure-adf.md)
 - [Azure DevOps](./links/ado.md)
 - [Azure Cloud Adoption Framework (CAF)](./links/azure-caf.md)
+- [Azure Functions](./links/azure-functions.md)
 - [Azure Instrumentation](./links/azure-instrumentation.md)
 - [Azure Key Vault](./links/azure-keyvault.md)
 - [Azure Logic Apps](./links/azure-logic-apps.md)
 - [Azure Networking](./links/azure-networking.md)
 - [Azure Portal](./links/azure-portal.md)
+- [Azure Resiliency](./links/azure-resiliency.md)
 - [Azure Resource Manager(ARM)](./links/arm.md)
 - [Azure SQL Database](./links/azure-ms-sql-db.md)
 - [Azure Synapse](./links/azure-synapse.md)
@@ -41,7 +43,8 @@ Here you will find various pieces of code, documentation and links across numero
 ### General
 - [General Networking](./links/general-networking.md)
 ### Oracle
-- [Oracle](./links/oracle.md)
+- [Oracle](./links/oracle-database.md)
+- [Oracle](./links/oracle-cloud.md)
 ### Training
 - [Training](./links/training.md)
 

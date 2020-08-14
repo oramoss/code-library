@@ -6,6 +6,13 @@ Links related to Azure DevOps.
 - [Azure DevOps: store the TAG version in a system variable](https://medium.com/@lucanardelli/azure-devops-store-the-tag-version-in-a-system-variable-3ad5c8a26d93)
 - [Azure DevOps - CI CD - Build And Release Pipeline - Azure Function](https://www.c-sharpcorner.com/article/azure-devops-ci-cd-build-and-release-pipeline-azure-function)
 - [Build options](https://docs.microsoft.com/en-us/azure/devops/pipelines/build/options?view=azure-devops)
+- [Azure’s Infrastructure-As-Code: ARM Templates, Validation, and Deployment Using Azure DevOps](https://dzone.com/articles/azures-infrastructure-as-code-azure-resource-manag)
+- [Template types & usage](https://docs.microsoft.com/en-us/azure/devops/pipelines/process/templates?view=azure-devops)
+- [Use predefined variables](https://docs.microsoft.com/en-us/azure/devops/pipelines/build/variables?view=azure-devops&tabs=yaml)
+- [Azure PowerShell task](https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/deploy/azure-powershell?view=azure-devops)
+- [Powershell task](https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/utility/powershell?view=azure-devops)
+- [How To Test PowerShell Scripts With WhatIf](https://www.pluralsight.com/blog/software-development/test-powershell-with-whatif)
+- [Building an Azure Devops Pipeline [Soup to Nuts]](https://adamtheautomator.com/azure-devops-pipeline-infrastructure/)
 
 ## Deploying
 - [Azure Functions: Deploying from VS Code and Azure DevOps](https://cloudskills.io/blog/azure-functions-deploy)
@@ -25,3 +32,6 @@ Links related to Azure DevOps.
 
 ## Extensions
 - [GitVersion](https://gitversion.net/)
+
+## Agents
+- [Microsoft-hosted agents](https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/hosted?view=azure-devops&tabs=yaml)
