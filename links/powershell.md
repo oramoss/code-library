@@ -6,3 +6,6 @@ Links related to Powershell.
 
 ## Modules
 - [Update Manually Installed PowerShell Modules from the PowerShell Gallery](https://mikefrobbins.com/2016/06/09/update-manually-installed-powershell-modules-from-the-powershell-gallery/)
+
+## Techniques
+- [Strings in PowerShell - Replace, compare, concatenate, split, substring](https://4sysops.com/archives/strings-in-powershell-replace-compare-concatenate-split-substring/)
