@@ -18,6 +18,11 @@ Here you will find various pieces of code, documentation and links across numero
 - [Shell](./shell/shell.md)
 - [SQL](./sql/sql.md)
 
+## Code Snippets
+### Microsoft
+- [Utilities](./az-utilities/az-utilities.md)
+- [Powershell](./powershell/powershell.md)
+
 ## Links
 ### Microsoft
 - [Azure CLI](./links/az-cli.md)
