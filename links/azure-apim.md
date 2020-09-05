@@ -7,3 +7,8 @@ Links related to Azure API Management Service (APIM).
 
 ## Security
 - [Azure API Management, Key Vault and Managed Identities](https://madeofstrings.com/2019/06/13/azure-api-management-key-vault-and-managed-identities/)
+- [Protecting APIs with API Management and Application Gateway](https://fabriciosanchez-en.azurewebsites.net/protecting-apis-with-api-management-and-application-gateway/)
+- [Integrate API Management in an internal VNET with Application Gateway](https://github.com/andrew-kelleher/AzureAPIMAppGW)
+
+## Management
+- [API Management Features](https://docs.microsoft.com/en-us/azure/api-management/api-management-features)

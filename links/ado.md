@@ -35,3 +35,6 @@ Links related to Azure DevOps.
 
 ## Agents
 - [Microsoft-hosted agents](https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/hosted?view=azure-devops&tabs=yaml)
+
+## Boards
+- [Work Flow and State Categories](https://docs.microsoft.com/en-us/azure/devops/boards/work-items/workflow-and-state-categories?view=azure-devops&tabs=agile-process)

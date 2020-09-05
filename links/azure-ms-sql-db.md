@@ -8,6 +8,8 @@ Links related to Microsoft SQL Database.
 ## Networking
 - [Azure Private Link for Azure SQL Database and Azure Synapse Analytics](https://docs.microsoft.com/en-gb/azure/azure-sql/database/private-endpoint-overview)
 - [Azure SQL Database and Azure Synapse Analytics connectivity architecture](https://docs.microsoft.com/en-gb/azure/sql-database/sql-database-connectivity-architecture#connection-policy)
+- [Completely Private Azure SQL With Conditional Access Policy](https://techcommunity.microsoft.com/t5/azure-architecture-blog/completely-private-azure-sql-with-conditional-access-policy/ba-p/1616128)
+- [Deny Public Network Access](https://docs.microsoft.com/en-gb/azure/azure-sql/database/connectivity-settings#deny-public-network-access)
 
 ## SQL
 - [SQL Injection](https://docs.microsoft.com/en-us/sql/relational-databases/security/sql-injection?view=sql-server-ver15)

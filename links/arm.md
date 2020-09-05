@@ -6,3 +6,7 @@ Links related to ARM.
 - [Azure’s Infrastructure-As-Code: ARM Templates, Validation, and Deployment Using Azure DevOps](https://dzone.com/articles/azures-infrastructure-as-code-azure-resource-manag)
 - [ARM template deployment what-if operation (Preview)](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/template-deploy-what-if?tabs=azure-powershell)
 - [Azure Web App with Storage and SendGrid](https://anthonychu.ca/post/arm-template-storage-sendgrid/)
+- [Generating Unique GUIDs in Azure Resource Manager Templates](https://blog.tyang.org/2018/01/09/generating-unique-guids-in-azure-resource-manager-templates/)
+
+## Parameter Files
+- [Parameter Files](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/parameter-files)

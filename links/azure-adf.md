@@ -6,6 +6,7 @@ Links related to Azure Data Factory.
 
 ## Deploying
 - [Azure Data Factory Tools](https://sqlplayer.net/adftools/)
+- [Private Link for ADF](https://adfdocs.blob.core.windows.net/docs/ADF%20PLS%20Public%20Doc.pdf)
 
 ## Activities
 - [Web Hook vs Web Activity](https://mrpaulandrew.com/2019/06/18/azure-data-factory-web-hook-vs-web-activity/)
@@ -14,6 +15,9 @@ Links related to Azure Data Factory.
 - [Consuming a SOAP service using Azure Data Factory Copy Data Activity](https://medium.com/@gabrielsribe/consuming-a-soap-service-using-azure-data-factory-copy-data-activity-a4a3332cc4c)
 - [Uploading Files from On-Prem File System to Azure Blob Storage Using ADF V2](https://adatis.co.uk/uploading-files-from-on-prem-file-system-to-azure-blob-storage-using-adf-v2/)
 - [Delimited text format in Azure Data Factory](https://docs.microsoft.com/en-us/azure/data-factory/format-delimited-text)
+
+## Global Parameters
+- [Global parameters in Azure Data Factory](https://docs.microsoft.com/en-us/azure/data-factory/author-global-parameters)
 
 ## Standards
 - [Azure Data Factory – Suggested naming conventions and best practices.](https://adatis.co.uk/azure-data-factory-suggested-naming-conventions-and-best-practices/)
