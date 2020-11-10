@@ -3,7 +3,7 @@ Get-AzVMImage| Select * | Out-Gridview –Passthru
 Get-AzVMImage | Where-Object {$_.ImageName -eq "d570a118449e48fdbe814fb54b36b60e__hwx_sandbox_hdp_2_5v6"}
 
 #View the templates available
-$Location=UK South
+$Location="UK South"
 Get-AzVMImagePublisher -Location $Location #check all the publishers available
 Get-AzVMImageOffer -Location $Location -PublisherName "Hortonworks" #look for offers for a publisher (Hortonworks)
 Get-AzVMImageSku -Location $Location -PublisherName "Hortonworks" -Offer "hortonworks-sandbox" #view SKUs for an offer (hortonworks-sandbox)

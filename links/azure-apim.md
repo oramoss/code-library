@@ -12,3 +12,5 @@ Links related to Azure API Management Service (APIM).
 
 ## Management
 - [API Management Features](https://docs.microsoft.com/en-us/azure/api-management/api-management-features)
+- [Monitor published APIs](https://docs.microsoft.com/en-us/azure/api-management/api-management-howto-use-azure-monitor)
+- [How to log events to Azure Event Hubs in Azure API Management](https://docs.microsoft.com/en-us/azure/api-management/api-management-howto-log-event-hubs)

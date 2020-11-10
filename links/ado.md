@@ -19,6 +19,8 @@ Links related to Azure DevOps.
 - [Auto-generating release notes in Azure DevOps pipelines](https://willys-cave.ghost.io/auto-generating-release-notes-in-azure-devops-pipelines/)
 - [Release Triggers](https://docs.microsoft.com/en-us/azure/devops/pipelines/release/triggers?view=azure-devops)
 - [Deploy an Azure Function](https://docs.microsoft.com/en-us/azure/devops/pipelines/targets/azure-functions?view=azure-devops&tabs=dotnet-core%2Cyaml)
+- [Deploying a DACPAC to azure with azure pipelines and managed identity](https://medium.com/microsoftazure/deploying-a-dacpac-to-azure-with-azure-pipelines-and-managed-identity-89703d405e00)
+- [Execution Timeout Expired’ with SqlPackage.exe on Azure DevOps Release Pipeline Fix](https://blog.nicholasrogoff.com/2018/11/28/execution-timeout-expired-with-sqlpackage-exe-on-azure-devops-release-pipeline-fix/)
 
 ## Traceability
 - [Linking, traceability, and managing dependencies](https://docs.microsoft.com/en-us/azure/devops/boards/queries/link-work-items-support-traceability?view=azure-devops&tabs=new-web-form)
@@ -32,6 +34,7 @@ Links related to Azure DevOps.
 
 ## Extensions
 - [GitVersion](https://gitversion.net/)
+- [Export Wiki as PDF](https://melcher.dev/2019/05/azure-devops-export-wiki-as-pdf/)
 
 ## Agents
 - [Microsoft-hosted agents](https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/hosted?view=azure-devops&tabs=yaml)

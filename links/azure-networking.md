@@ -18,6 +18,11 @@ Links related to Azure Networking.
 - [Deny Public Network Access](https://docs.microsoft.com/en-gb/azure/azure-sql/database/connectivity-settings#deny-public-network-access)
 - [Protecting APIs with API Management and Application Gateway](https://fabriciosanchez-en.azurewebsites.net/protecting-apis-with-api-management-and-application-gateway/)
 - [Integrate API Management in an internal VNET with Application Gateway](https://github.com/andrew-kelleher/AzureAPIMAppGW)
+- [Create a Site-to-Site connection in the Azure portal](https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal)
+- [UDR Overview](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-udr-overview)
 
 ## Tagging
 - [Virtual network service tags](https://docs.microsoft.com/en-us/azure/virtual-network/service-tags-overview)
+
+## Security
+- [How to Shut Off Public Connectivity to Azure SQL Database | Data Exposed](https://www.youtube.com/watch?v=9JVNX2JCmDQ)

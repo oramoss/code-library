@@ -1,0 +1,10 @@
+// Total billable executions 
+// Total billable executions by operation name. 
+// Total billable executions
+// resource_workflowName_s,
+AzureDiagnostics
+| where ResourceProvider == "MICROSOFT.LOGIC"
+| where Category == "WorkflowRuntime" 
+| where OperationName has "workflowTriggerStarted" or OperationName has "workflowActionStarted" 
+| where TimeGenerated between (todatetime("2020-08-24 00:00:00.0") .. todatetime("2020-08-30 23:59:59.0"))
+| summarize dcount(resource_runId_s) by OperationName, startofday(TimeGenerated)
