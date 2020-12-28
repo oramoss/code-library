@@ -1,5 +1,5 @@
 ﻿//Get User by Object id:
-Get-AzureADObjectByObjectId -ObjectIds 12345678-1234-1234-1234-123456789012
+Get-AzureADObjectByObjectId -ObjectIds 5fcb88bc-e680-4857-9780-b897301f58b5
 Get-AzureADObjectByObjectId -ObjectIds <Object ID 1>, <Object ID 2>
 Get-AzureADServicePrincipal -SearchString "???"
 

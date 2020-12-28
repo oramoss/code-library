@@ -8,6 +8,7 @@ Links related to Azure Data Factory.
 - [Azure Data Factory Tools](https://sqlplayer.net/adftools/)
 - [Private Link for ADF](https://adfdocs.blob.core.windows.net/docs/ADF%20PLS%20Public%20Doc.pdf)
 - [Continuous Integration (CI) Deployment](https://docs.microsoft.com/en-us/azure/data-factory/continuous-integration-deployment)
+- [How to eliminate Azure Data Factory’s public Internet exposure using Private Link](https://cloudblogs.microsoft.com/industry-blog/en-gb/technetuk/2020/11/26/how-to-eliminate-azure-data-factorys-public-internet-exposure-using-private-link/)
 
 ## Activities
 - [Web Hook vs Web Activity](https://mrpaulandrew.com/2019/06/18/azure-data-factory-web-hook-vs-web-activity/)
@@ -23,6 +24,7 @@ Links related to Azure Data Factory.
 ## Techniques
 - [Surrogate Key for Row Numbers](https://docs.microsoft.com/en-us/azure/data-factory/data-flow-surrogate-key)
 - [Upload SSH Key to Key Vault for use in ADF](https://www.techtalkcorner.com/upload-ssh-key-azure-key-vault/)
+- [Get ADF To Check For Running Pipeline Via Azure Management API](https://mrpaulandrew.com/2020/11/12/get-data-factory-to-check-itself-for-a-running-pipeline-via-the-azure-management-api/)
 
 ## Training
 - [A Day Full Of ADF - Paul Andrew](https://github.com/mrpaulandrew/A-Day-Full-of-Azure-Data-Factory)

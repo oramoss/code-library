@@ -12,6 +12,10 @@ Links related to Microsoft SQL Database.
 - [Deny Public Network Access](https://docs.microsoft.com/en-gb/azure/azure-sql/database/connectivity-settings#deny-public-network-access)
 - [How to Shut Off Public Connectivity to Azure SQL Database | Data Exposed](https://www.youtube.com/watch?v=9JVNX2JCmDQ)
 
+## Availability, DR, HA
+- [Always on Listeners](https://www.sqlshack.com/sql-server-always-on-listeners/)
+- [What is an Always On availability group?](https://docs.microsoft.com/en-us/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server?view=sql-server-ver15)
+
 ## SQL
 - [SQL Injection](https://docs.microsoft.com/en-us/sql/relational-databases/security/sql-injection?view=sql-server-ver15)
 
@@ -19,3 +23,4 @@ Links related to Microsoft SQL Database.
 - [Tutorial: Use a Windows VM system-assigned managed identity to access Azure SQL](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-sql#create-a-group-in-azure-ad-and-make-the-vms-system-assigned-managed-identity-a-member-of-the-group)
 - [Automating MSI Access to SQL DB](https://richardswinbank.net/azure/catch_22_automating_msi_access_to_azure_sql_database)
 - [Handling Azure Managed Identity access to Azure SQL DB in DevOps Pipeline](https://blog.bredvid.no/handling-azure-managed-identity-access-to-azure-sql-in-an-azure-devops-pipeline-1e74e1beb10b)
+- [AAD Authentication Service Principal](https://docs.microsoft.com/en-us/azure/azure-sql/database/authentication-aad-service-principal-tutorial#assign-an-identity-to-the-azure-sql-logical-server)

@@ -7,6 +7,8 @@ Links related to ARM.
 - [ARM template deployment what-if operation (Preview)](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/template-deploy-what-if?tabs=azure-powershell)
 - [Azure Web App with Storage and SendGrid](https://anthonychu.ca/post/arm-template-storage-sendgrid/)
 - [Generating Unique GUIDs in Azure Resource Manager Templates](https://blog.tyang.org/2018/01/09/generating-unique-guids-in-azure-resource-manager-templates/)
+- [RBAC Role assignments in ARM Templates](https://winterdom.com/2018/08/02/rbac-role-assignments-in-arm-templates)
+- [Matt Felton Library](https://github.com/mattfeltonma/arm-templates/tree/master/examples)
 
 ## Parameter Files
 - [Parameter Files](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/parameter-files)

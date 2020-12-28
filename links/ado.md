@@ -41,3 +41,6 @@ Links related to Azure DevOps.
 
 ## Boards
 - [Work Flow and State Categories](https://docs.microsoft.com/en-us/azure/devops/boards/work-items/workflow-and-state-categories?view=azure-devops&tabs=agile-process)
+
+## Best Practice
+- [How Does Microsoft Do DevOps](https://devblogs.microsoft.com/devops/how-does-microsoft-do-devops/?WT.mc_id=devops-11175-abewan)

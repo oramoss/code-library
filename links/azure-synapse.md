@@ -12,3 +12,5 @@ Links related to Microsoft Synapse.
 - [James Serra - Public Preview & Slide Deck](http://www.jamesserra.com/archive/2020/05/build-announcements-azure-synapse-analytics-in-public-preview-and-more/)
 - [When to use Azure Synapse Analytics and/or Azure Databricks?](https://www.element61.be/en/resource/when-use-azure-synapse-analytics-andor-azure-databricks)
 
+## Videos
+- [Intro to Azure Synapse Analytics](https://www.youtube.com/watch?v=BNNW1whKrIk&feature=youtu.be&utm_content=145801297&utm_medium=social&utm_source=linkedin&hss_channel=lcp-15210062)

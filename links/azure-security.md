@@ -1,8 +1,12 @@
 # Azure Security
 Links related to Azure Security.
 
-## Roles
+## General
+- [Azure Security Graphic](https://azure.microsoft.com/en-us/resources/azure-sql-security-infographic/)
+
+## RBAC
 - [Azure built-in roles](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles)
+- [Understanding Azure Storage Data Access Permissions](https://www.schaeflein.net/understanding-azure-storage-data-access-permissions/)
 
 ## Active Directory
 - [AD DS Pricing](https://azure.microsoft.com/en-gb/pricing/details/active-directory-ds/)
@@ -14,8 +18,10 @@ Links related to Azure Security.
 - [Create Custom Roles in Portal](https://docs.microsoft.com/en-us/azure/role-based-access-control/custom-roles-portal)
 - [Custom Roles](https://docs.microsoft.com/en-us/azure/role-based-access-control/custom-roles)
 
-## Managed Identities
+## Managed Identities / Service Principals
 - [Azure API Management, Key Vault and Managed Identities](https://madeofstrings.com/2019/06/13/azure-api-management-key-vault-and-managed-identities/)
+- [AAD Authentication Service Principal](https://docs.microsoft.com/en-us/azure/azure-sql/database/authentication-aad-service-principal-tutorial#assign-an-identity-to-the-azure-sql-logical-server)
+- [App Registrations vs Enterprise Apps](https://www.seb8iaan.com/the-difference-between-azuread-app-registrations-and-enterprise-applications-explained/)
 
 ## Applications
 - [Acquire a token from Azure AD for authorizing requests from a client application](https://docs.microsoft.com/en-us/azure/storage/common/storage-auth-aad-app)

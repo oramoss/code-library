@@ -20,6 +20,7 @@ Links related to Azure Networking.
 - [Integrate API Management in an internal VNET with Application Gateway](https://github.com/andrew-kelleher/AzureAPIMAppGW)
 - [Create a Site-to-Site connection in the Azure portal](https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal)
 - [UDR Overview](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-udr-overview)
+- [Bastion VNET Peering](https://docs.microsoft.com/en-us/azure/bastion/vnet-peering)
 
 ## Tagging
 - [Virtual network service tags](https://docs.microsoft.com/en-us/azure/virtual-network/service-tags-overview)
