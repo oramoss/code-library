@@ -13,3 +13,6 @@ Links related to DevOps in general.
 
 ## Technologies
 - [Teraform vs BICEP](http://runasradio.com/Shows/Show/740)
+
+## Git
+- [Animated Git usage](https://www.youtube.com/watch?app=desktop&v=ZgCCnv9LxzA)

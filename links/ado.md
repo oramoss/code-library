@@ -44,3 +44,6 @@ Links related to Azure DevOps.
 
 ## Best Practice
 - [How Does Microsoft Do DevOps](https://devblogs.microsoft.com/devops/how-does-microsoft-do-devops/?WT.mc_id=devops-11175-abewan)
+
+## How to do stuff
+- [Managed Identity in Service Connections](https://stefanstranger.github.io/2019/03/02/ManageIdentityInServiceConnections/)

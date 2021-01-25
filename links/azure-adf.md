@@ -9,6 +9,7 @@ Links related to Azure Data Factory.
 - [Private Link for ADF](https://adfdocs.blob.core.windows.net/docs/ADF%20PLS%20Public%20Doc.pdf)
 - [Continuous Integration (CI) Deployment](https://docs.microsoft.com/en-us/azure/data-factory/continuous-integration-deployment)
 - [How to eliminate Azure Data Factory’s public Internet exposure using Private Link](https://cloudblogs.microsoft.com/industry-blog/en-gb/technetuk/2020/11/26/how-to-eliminate-azure-data-factorys-public-internet-exposure-using-private-link/)
+- [Two methods of deployment](https://sqlplayer.net/2021/01/two-methods-of-deployment-azure-data-factory/)
 
 ## Activities
 - [Web Hook vs Web Activity](https://mrpaulandrew.com/2019/06/18/azure-data-factory-web-hook-vs-web-activity/)
@@ -33,6 +34,7 @@ Links related to Azure Data Factory.
 - [Performance Tune ADF Data Flow Transformations](https://techcommunity.microsoft.com/t5/azure-data-factory/performance-tune-adf-data-flow-transformations/ba-p/1830122)
 - [Use Azure IR to Tune ADF and Synapse Data Flows](https://techcommunity.microsoft.com/t5/azure-data-factory/use-azure-ir-to-tune-adf-and-synapse-data-flows/ba-p/1715269)
 - [Performance Tuning ADF Data Flow Sources and Sinks](https://techcommunity.microsoft.com/t5/azure-data-factory/performance-tuning-adf-data-flow-sources-and-sinks/ba-p/1781804)
+- [Use Key Vault Secrets in Pipeline Activities](https://docs.microsoft.com/en-us/azure/data-factory/how-to-use-azure-key-vault-secrets-pipeline-activities)
 
 ## Global Parameters
 - [Global parameters in Azure Data Factory](https://docs.microsoft.com/en-us/azure/data-factory/author-global-parameters)

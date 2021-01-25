@@ -6,3 +6,4 @@ Links related to Azure Logic Apps.
 - [Create, monitor, and manage FTP files by using Azure Logic Apps](https://docs.microsoft.com/en-us/azure/connectors/connectors-create-api-ftp)
 - [Connect to on-premises file systems with Azure Logic Apps](https://docs.microsoft.com/en-us/azure/logic-apps/logic-apps-using-file-connector)
 - [Using File Connector](https://docs.microsoft.com/en-us/azure/logic-apps/logic-apps-using-file-connector)
+- [SQL DB Connector configuration](https://stackoverflow.com/questions/60573454/in-azure-logic-apps-arm-template-what-are-the-possible-values-for-the-authtype)

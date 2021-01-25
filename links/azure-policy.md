@@ -9,3 +9,4 @@ Links related to Azure Policy.
 - [Policies with parameters](https://blog.tyang.org/2018/06/06/using-arm-templates-to-deploying-azure-policy-definitions-that-requires-input-parameters/)
 - [Azure policy by ARM template](https://wedoazure.ie/2019/09/30/how-to-azure-policy-via-arm-template/)
 - [Tutorial: Implement Azure Policy as Code with GitHub](https://docs.microsoft.com/en-us/azure/governance/policy/tutorials/policy-as-code-github)
+- [Azure Policy – Perform policy operations through Azure DevOps](https://techcommunity.microsoft.com/t5/azure-paas-blog/azure-policy-perform-policy-operations-through-azure-devops/ba-p/2045515)
