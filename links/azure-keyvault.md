@@ -11,6 +11,7 @@ Links related to Key Vault.
 
 ## Accessibility
 - [Azure API Management, Key Vault and Managed Identities](https://madeofstrings.com/2019/06/13/azure-api-management-key-vault-and-managed-identities/)
+- [Using Azure RBAC with Azure Key Vault](https://joonasw.net/view/using-azure-rbac-with-azure-key-vault)
 
 ## Techniques
 - [Upload SSH Key to Key Vault for use in ADF](https://www.techtalkcorner.com/upload-ssh-key-azure-key-vault/)

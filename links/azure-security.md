@@ -18,6 +18,11 @@ Links related to Azure Security.
 - [AD DS Tutorial Create Instance](https://docs.microsoft.com/en-us/azure/active-directory-domain-services/tutorial-create-instance)
 - [Create Custom Roles in Portal](https://docs.microsoft.com/en-us/azure/role-based-access-control/custom-roles-portal)
 - [Custom Roles](https://docs.microsoft.com/en-us/azure/role-based-access-control/custom-roles)
+- [Integrate on-premises AD domains with Azure AD](https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/identity/azure-ad)
+- [Integrate on-premises AD with Azure](https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/identity/)
+- [Deploy AD DS in an Azure virtual network](https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/identity/adds-extend-domain)
+- [Create an AD DS resource forest in Azure](https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/identity/adds-forest)
+- [Extend on-premises AD FS to Azure](https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/identity/adfs)
 
 ## Managed Identities / Service Principals
 - [Azure API Management, Key Vault and Managed Identities](https://madeofstrings.com/2019/06/13/azure-api-management-key-vault-and-managed-identities/)

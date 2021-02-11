@@ -6,6 +6,7 @@ Links related to Azure Blueprints.
 - [ENFORCING SPEED AND CONTROL WITH MANAGEMENT GROUPS AND AZURE BLUEPRINTS](https://blog.ine.com/cloud-governance-step-2-enforce-speed-and-control-using-azure-management-groups-and-azure-blueprints)
 - [Intro to Blueprints](https://cloudskills.io/blog/intro-azure-blueprints)
 - [Azure Tips n Tricks - Tip 210](https://microsoft.github.io/AzureTipsAndTricks/blog/tip210.html)
+- [Essential tips for building a large Azure blueprint](https://azsec.azurewebsites.net/2020/01/04/essential-tips-for-building-a-large-azure-blueprint/)
 
 ## Documentation
 - [Microsoft Main page for Blueprints](https://docs.microsoft.com/en-us/azure/governance/blueprints/)
