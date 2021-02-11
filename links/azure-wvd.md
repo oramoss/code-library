@@ -7,6 +7,9 @@ Links related to Azure Windows Virtual Desktop.
 ## Registrations
 - [Getting started: Windows Virtual Desktop ARM-based Azure portal](https://techcommunity.microsoft.com/t5/windows-it-pro-blog/getting-started-windows-virtual-desktop-arm-based-azure-portal/ba-p/1374466)
 
+## Security
+- [Security Baseline for WVD](https://docs.microsoft.com/en-us/azure/virtual-desktop/security-baseline)
+
 ## Configuring
 - [Configuring WVD](https://www.youtube.com/watch?v=qtx3rippZJQ)
 - [Multi Forest](https://docs.microsoft.com/en-us/azure/architecture/example-scenario/wvd/multi-forest)
