@@ -4,6 +4,7 @@ Links related to Azure Security.
 ## General
 - [Azure Security Graphic](https://azure.microsoft.com/en-us/resources/azure-sql-security-infographic/)
 - [Why Is Privileged Access Important](https://cloudntech.blogspot.com/2020/12/why-is-privileged-access-important.html)
+- [Azure security technical capabilities](https://docs.microsoft.com/en-us/azure/security/fundamentals/technical-capabilities)
 
 ## RBAC
 - [Azure built-in roles](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles)

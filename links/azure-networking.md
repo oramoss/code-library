@@ -27,3 +27,6 @@ Links related to Azure Networking.
 
 ## Security
 - [How to Shut Off Public Connectivity to Azure SQL Database | Data Exposed](https://www.youtube.com/watch?v=9JVNX2JCmDQ)
+
+## Labs
+- [Creating a Site-to-Site VPN between your Lab & Azure](https://backupbits.wordpress.com/2019/03/27/creating-a-site-to-site-vpn-between-your-lab-azure/)

@@ -47,3 +47,7 @@ Links related to Azure DevOps.
 
 ## How to do stuff
 - [Managed Identity in Service Connections](https://stefanstranger.github.io/2019/03/02/ManageIdentityInServiceConnections/)
+- [Migrate data from Azure DevOps Server to Azure DevOps Services](https://docs.microsoft.com/en-gb/azure/devops/migrate/migration-overview?view=azure-devops)
+- [Migrating Code to Azure DevOps Repos (4 Different Scenarios)](https://www.dotnetcurry.com/devops/1540/code-migration-azure-devops)
+- [ADO Migration MS main page](https://azure.microsoft.com/en-us/services/devops/migrate/)
+
