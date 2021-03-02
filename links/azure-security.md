@@ -5,10 +5,18 @@ Links related to Azure Security.
 - [Azure Security Graphic](https://azure.microsoft.com/en-us/resources/azure-sql-security-infographic/)
 - [Why Is Privileged Access Important](https://cloudntech.blogspot.com/2020/12/why-is-privileged-access-important.html)
 - [Azure security technical capabilities](https://docs.microsoft.com/en-us/azure/security/fundamentals/technical-capabilities)
+- [What's the difference between Azure Security Center, Azure Defender and Azure Sentinel?](https://techcommunity.microsoft.com/t5/itops-talk-blog/what-s-the-difference-between-azure-security-center-azure/ba-p/2155188?WT.mc_id=modinfra-0000-pierrer)
 
 ## RBAC
 - [Azure built-in roles](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles)
 - [Understanding Azure Storage Data Access Permissions](https://www.schaeflein.net/understanding-azure-storage-data-access-permissions/)
+
+## Firewall
+- [Azure Firewall Architecture Guide](https://docs.microsoft.com/en-us/azure/architecture/example-scenario/firewalls/)
+- [Azure Firewall FAQ](https://docs.microsoft.com/en-us/azure/firewall/firewall-faq)
+
+## NSG
+- [Network Security Group Monitoring](https://techcommunity.microsoft.com/t5/core-infrastructure-and-security/network-security-group-monitoring/ba-p/2106308)
 
 ## Active Directory
 - [AD DS Pricing](https://azure.microsoft.com/en-gb/pricing/details/active-directory-ds/)
@@ -44,3 +52,8 @@ Links related to Azure Security.
 
 ## Policies
 - [Azure Resource Policies Part 1 - Built In Policies](https://samcogan.com/azure-resource-policies-part-1-built-in-policies/)
+
+## App Gateway (WAF)
+- [Azure Application Gateway Standard v2 and WAF v2 SKUs generally available](https://azure.microsoft.com/en-gb/updates/azure-application-gateway-standardv2-wafv2-skus-generally-available/)
+- [Taking advantage of the new Azure Application Gateway V2](https://azure.microsoft.com/en-gb/blog/taking-advantage-of-the-new-azure-application-gateway-v2/)
+- [Azure Network Security webinar: Protecting your web apps with Azure Web Application Firewall (WAF)](https://www.youtube.com/watch?v=r8jUY6t0JVE)

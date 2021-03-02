@@ -41,6 +41,7 @@ Here you will find various pieces of code, documentation and links across numero
 - [Azure Kubernetes Service (AKS)](./links/azure-aks.md)
 - [Azure Log Analytics](./links/azure-log-analytics.md)
 - [Azure Logic Apps](./links/azure-logic-apps.md)
+- [Azure Monitoring](./links/azure-monitoring.md)
 - [Azure Networking](./links/azure-networking.md)
 - [Azure Policy](./links/azure-policy.md)
 - [Azure Portal](./links/azure-portal.md)

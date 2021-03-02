@@ -17,3 +17,6 @@ Links related to ARM.
 
 ## Parameter Files
 - [Parameter Files](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/parameter-files)
+
+## Best Practice
+- [10 Azure Resource Manager Template Proven Practices - Nashville Azure Users Group 18-Feb-2021](https://www.youtube.com/watch?app=desktop&v=VX9Sq4JDzIo&feature=youtu.be)

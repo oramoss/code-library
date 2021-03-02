@@ -21,6 +21,7 @@ Links related to Azure Networking.
 - [Create a Site-to-Site connection in the Azure portal](https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal)
 - [UDR Overview](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-udr-overview)
 - [Bastion VNET Peering](https://docs.microsoft.com/en-us/azure/bastion/vnet-peering)
+- [How to use Azure Firewall Premium with WVD](https://techcommunity.microsoft.com/t5/azure-network-security/how-to-use-azure-firewall-premium-with-wvd/ba-p/2148402)
 
 ## Tagging
 - [Virtual network service tags](https://docs.microsoft.com/en-us/azure/virtual-network/service-tags-overview)
