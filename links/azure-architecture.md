@@ -9,3 +9,5 @@ Links related to Azure Cloud Architecture.
 
 ## Examples
 - [Banking System Cloud Transformation](https://docs.microsoft.com/en-us/azure/architecture/example-scenario/banking/banking-system-cloud-transformation)
+- [Deploy Enterprise-scale for small enterprises](https://github.com/Azure/Enterprise-Scale/blob/main/docs/reference/treyresearch/README.md)
+- [New Azure Security Benchmark Foundation helps organizations embrace zero trust](https://devblogs.microsoft.com/azuregov/new-azure-security-benchmark-foundation-helps-organizations-embrace-zero-trust/)

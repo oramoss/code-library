@@ -22,6 +22,10 @@ Links related to Azure Networking.
 - [UDR Overview](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-udr-overview)
 - [Bastion VNET Peering](https://docs.microsoft.com/en-us/azure/bastion/vnet-peering)
 - [How to use Azure Firewall Premium with WVD](https://techcommunity.microsoft.com/t5/azure-network-security/how-to-use-azure-firewall-premium-with-wvd/ba-p/2148402)
+- [Virtual Network service endpoints](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-service-endpoints-overview)
+- [Multi-region web app with private connectivity to database](https://docs.microsoft.com/en-us/azure/architecture/example-scenario/sql-failover/app-service-private-sql-multi-region)
+- [Centralized vs Decentralized Private DNS Zones](https://github.com/paolosalvatori/private-endpoints-topologies)
+
 
 ## Tagging
 - [Virtual network service tags](https://docs.microsoft.com/en-us/azure/virtual-network/service-tags-overview)

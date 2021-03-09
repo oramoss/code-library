@@ -3,6 +3,7 @@ Links related to Virtual Machine.
 
 ## Capabilities
 - [Automanage VM](https://www.thomasmaurer.ch/2020/10/automanage-for-azure-virtual-machines/)
+- [Announcing preview of Azure Trusted Launch for virtual machines](https://azure.microsoft.com/en-us/blog/announcing-preview-of-azure-trusted-launch-for-virtual-machines/)
 
 ## Extensions
 - [IaaS AntiMalware, Windows](https://docs.microsoft.com/en-us/azure/virtual-machines/extensions/iaas-antimalware-windows)

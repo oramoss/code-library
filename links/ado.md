@@ -36,6 +36,9 @@ Links related to Azure DevOps.
 - [GitVersion](https://gitversion.net/)
 - [Export Wiki as PDF](https://melcher.dev/2019/05/azure-devops-export-wiki-as-pdf/)
 
+## Bicep
+- [Deploy Azure Bicep using Azure DevOps Pipelines](https://thomasthornton.cloud/2021/02/22/deploy-azure-bicep-using-azure-devops-pipelines/)
+
 ## Agents
 - [Microsoft-hosted agents](https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/hosted?view=azure-devops&tabs=yaml)
 
