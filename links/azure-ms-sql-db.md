@@ -24,3 +24,6 @@ Links related to Microsoft SQL Database.
 - [Automating MSI Access to SQL DB](https://richardswinbank.net/azure/catch_22_automating_msi_access_to_azure_sql_database)
 - [Handling Azure Managed Identity access to Azure SQL DB in DevOps Pipeline](https://blog.bredvid.no/handling-azure-managed-identity-access-to-azure-sql-in-an-azure-devops-pipeline-1e74e1beb10b)
 - [AAD Authentication Service Principal](https://docs.microsoft.com/en-us/azure/azure-sql/database/authentication-aad-service-principal-tutorial#assign-an-identity-to-the-azure-sql-logical-server)
+
+## Performance
+- [Index Maintenance Madness](https://www.brentozar.com/archive/2017/12/index-maintenance-madness/)

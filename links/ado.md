@@ -21,6 +21,7 @@ Links related to Azure DevOps.
 - [Deploy an Azure Function](https://docs.microsoft.com/en-us/azure/devops/pipelines/targets/azure-functions?view=azure-devops&tabs=dotnet-core%2Cyaml)
 - [Deploying a DACPAC to azure with azure pipelines and managed identity](https://medium.com/microsoftazure/deploying-a-dacpac-to-azure-with-azure-pipelines-and-managed-identity-89703d405e00)
 - [Execution Timeout Expired’ with SqlPackage.exe on Azure DevOps Release Pipeline Fix](https://blog.nicholasrogoff.com/2018/11/28/execution-timeout-expired-with-sqlpackage-exe-on-azure-devops-release-pipeline-fix/)
+- [Deploy to Azure Button for Azure Websites](https://azure.microsoft.com/en-gb/blog/deploy-to-azure-button-for-azure-websites-2/)
 
 ## Traceability
 - [Linking, traceability, and managing dependencies](https://docs.microsoft.com/en-us/azure/devops/boards/queries/link-work-items-support-traceability?view=azure-devops&tabs=new-web-form)
