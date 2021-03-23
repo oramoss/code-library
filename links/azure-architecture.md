@@ -6,6 +6,7 @@ Links related to Azure Cloud Architecture.
 - [API Management vs API Apps](http://theazurecoach.com/2015/11/api-management-vs-api-apps-2/)
 - [AZURE ARCHITECTURE BEST PRACTICES](https://youtu.be/8SCz9x6vaK8)
 - [Data Mesh defined, James Serra](http://www.jamesserra.com/archive/2021/02/data-mesh/)
+- [Improving agility, performance, and resilience with new Azure infrastructure capabilities](https://azure.microsoft.com/en-gb/blog/improving-agility-performance-and-resilience-with-new-azure-infrastructure-capabilities/)
 
 ## Examples
 - [Banking System Cloud Transformation](https://docs.microsoft.com/en-us/azure/architecture/example-scenario/banking/banking-system-cloud-transformation)

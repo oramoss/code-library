@@ -32,6 +32,7 @@ Links related to Azure Security.
 - [Deploy AD DS in an Azure virtual network](https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/identity/adds-extend-domain)
 - [Create an AD DS resource forest in Azure](https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/identity/adds-forest)
 - [Extend on-premises AD FS to Azure](https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/identity/adfs)
+- [How to Decide Between Azure AD Connect and Azure AD Connect Cloud Sync](https://blog.expta.com/2021/03/new-article-how-to-decide-between-azure.html?m=1)
 
 ## Managed Identities / Service Principals
 - [Azure API Management, Key Vault and Managed Identities](https://madeofstrings.com/2019/06/13/azure-api-management-key-vault-and-managed-identities/)

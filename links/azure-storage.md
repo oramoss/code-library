@@ -1,6 +1,9 @@
 # Microsoft Storage
 Links related to Microsoft Storage.
 
+## Disks
+- [Overview of Azure Disk Backup (in preview)](https://docs.microsoft.com/en-us/azure/backup/disk-backup-overview)
+
 ## Blob
 - [Azure Block Blob Storage Backup](https://azure.microsoft.com/en-us/blog/microsoft-azure-block-blob-storage-backup/)
 

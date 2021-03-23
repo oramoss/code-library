@@ -14,3 +14,7 @@ Links related to Microsoft Synapse.
 
 ## Videos
 - [Intro to Azure Synapse Analytics](https://www.youtube.com/watch?v=BNNW1whKrIk&feature=youtu.be&utm_content=145801297&utm_medium=social&utm_source=linkedin&hss_channel=lcp-15210062)
+
+## Training
+- [Understand data warehouse developer features of Azure Synapse Analytics](https://docs.microsoft.com/en-us/learn/modules/understand-data-warehouse-developer-features-of-azure-synapse-analytics/)
+- [Work with Data Warehouses using Azure Synapse Analytics](https://docs.microsoft.com/en-us/learn/paths/work-with-data-warehouses-using-azure-synapse-analytics/)
