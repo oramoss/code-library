@@ -4,6 +4,7 @@ Links related to Microsoft SQL Database.
 ## Administration
 - [Adding Users to Azure SQL Databases](https://www.mssqltips.com/sqlservertip/5242/adding-users-to-azure-sql-databases/)
 - [The mother of all Azure SQL Database ARM templates](https://www.yobyot.com/azure/example-arm-template-azure-sql-vcore-failover-group-elasticpool/2020/02/04/)
+- [Azure Backup for SQL Server in Azure Virtual Machines now generally available!](https://azure.microsoft.com/en-us/blog/azure-backup-for-sql-server-in-azure-virtual-machines-now-generally-available/)
 
 ## Networking
 - [Azure Private Link for Azure SQL Database and Azure Synapse Analytics](https://docs.microsoft.com/en-gb/azure/azure-sql/database/private-endpoint-overview)
@@ -32,3 +33,6 @@ Links related to Microsoft SQL Database.
 
 ## Training
 - [Fundamentals of Database Administration - Brent Ozars](https://www.youtube.com/playlist?app=desktop&list=PLDYqU5RH_aX1hdZ32WfXklJlkh-H74juv)
+
+## Managed Instance
+- [Delete a subnet after deleting an Azure SQL Managed Instance](https://docs.microsoft.com/en-us/azure/azure-sql/managed-instance/virtual-cluster-delete)

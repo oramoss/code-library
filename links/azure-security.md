@@ -6,6 +6,11 @@ Links related to Azure Security.
 - [Why Is Privileged Access Important](https://cloudntech.blogspot.com/2020/12/why-is-privileged-access-important.html)
 - [Azure security technical capabilities](https://docs.microsoft.com/en-us/azure/security/fundamentals/technical-capabilities)
 - [What's the difference between Azure Security Center, Azure Defender and Azure Sentinel?](https://techcommunity.microsoft.com/t5/itops-talk-blog/what-s-the-difference-between-azure-security-center-azure/ba-p/2155188?WT.mc_id=modinfra-0000-pierrer)
+- [Ask the Expert: Azure security—Tips, tricks, best practices and things you should be thinking about](https://www.nigelfrank.com/blog/azure-security-tips-tricks-and-best-practices/?utm_source=DSMN8&utm_medium=LinkedIn)
+- [How much security is ‘enough’ security? Looking at Microsoft 365 Defender vs. Azure Sentinel](https://www.itpromentor.com/m365-defender-vs-sentinel/)
+
+## Tools
+- [SkyArk](https://github.com/cyberark/SkyArk)
 
 ## RBAC
 - [Azure built-in roles](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles)

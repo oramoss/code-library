@@ -22,11 +22,15 @@ Links related to Azure Data Factory.
 - [Iterate over a data collection using Lookup and ForEach Activities](https://www.youtube.com/watch?v=ROq5mVrZPY0)
 - [Data Flows Training (Sept 2020 Update), Mark Kromer](https://www.slideshare.net/mobile/kromerm/azure-data-factory-data-flows-training-sept-2020-update)
 
+## Automation
+- [Azure Data Factory Solution to Start and Stop VM](https://www.techtalkcorner.com/start-and-stop-azure-vm/)
+
 ## Techniques
 - [Surrogate Key for Row Numbers](https://docs.microsoft.com/en-us/azure/data-factory/data-flow-surrogate-key)
 - [Upload SSH Key to Key Vault for use in ADF](https://www.techtalkcorner.com/upload-ssh-key-azure-key-vault/)
 - [Get ADF To Check For Running Pipeline Via Azure Management API](https://mrpaulandrew.com/2020/11/12/get-data-factory-to-check-itself-for-a-running-pipeline-via-the-azure-management-api/)
 - [Richard Swinbank ADF Testing Framework Series](https://richardswinbank.net/tag/adftesting?do=showtag&tag=adftesting)
+
 ## Training
 - [A Day Full Of ADF - Paul Andrew](https://github.com/mrpaulandrew/A-Day-Full-of-Azure-Data-Factory)
 - [Data Quality Patterns](https://www.slideshare.net/kromerm/data-quality-patterns-in-the-cloud-with-adf-238817317)

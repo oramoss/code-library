@@ -11,6 +11,7 @@ Links related to Powershell.
 - [Strings in PowerShell - Replace, compare, concatenate, split, substring](https://4sysops.com/archives/strings-in-powershell-replace-compare-concatenate-split-substring/)
 - [How To Test PowerShell Scripts With WhatIf](https://www.pluralsight.com/blog/software-development/test-powershell-with-whatif)
 - [Acquire Access Token With Powershell](https://docs.microsoft.com/en-us/information-protection/develop/concept-authentication-acquire-token-ps)
+- [How to Use Parameters in PowerShell Part I](https://www.red-gate.com/simple-talk/sysadmin/powershell/how-to-use-parameters-in-powershell/)
 
 ## Cloud Shell
 - [Azure Hack: Use AzCopy on Azure Cloud Shell to Upload Large Files to Storage Accounts](https://hackernoon.com/azure-hack-use-azcopy-on-azure-cloud-shell-to-upload-large-files-to-storage-accounts-l8fo324k)

@@ -17,6 +17,9 @@ Links related to Azure Networking.
 - [Azure Private Link and DNS – Part 2](https://journeyofthegeek.com/2020/03/06/azure-private-link-and-dns-part-2/)
 - [Azure Private Link and DNS](https://bloggerz.cloud/2020/12/18/azure-private-link-and-dns/)
 - [Azure Firewall DNS settings](https://docs.microsoft.com/en-us/azure/firewall/dns-settings)
+- [github - paolosalvatori/azure-firewall-dns-proxy-in-hub-and-spoke](https://github.com/paolosalvatori/azure-firewall-dns-proxy-in-hub-and-spoke)
+- [Azure Private Endpoint DNS configuration](https://docs.microsoft.com/en-us/azure/private-link/private-endpoint-dns)
+- [What is Azure Private DNS?](https://docs.microsoft.com/en-us/azure/dns/private-dns-overview)
 
 ## Topology
 - [Logic Apps, storage and VNETs](http://mikaelsand.se/2019/11/logic-apps-storage-and-vnets/)
@@ -35,6 +38,7 @@ Links related to Azure Networking.
 - [Using Azure Private Link (Preview) for Storage Accounts](https://stefanstranger.github.io/2019/11/03/UsingAzurePrivateLinkForStorageAccounts/)
 - [AZURE FIREWALL VS NETWORK SECURITY GROUP (NSG)](https://darawtechie.com/2019/09/05/azure-firewall-vs-network-security-group-nsg/#:~:text=An%20NSG%20is%20a%20firewall,well%20as%20L7%20application%20traffic.)
 - [Architect and optimize your internet traffic with Azure routing preference](https://azure.microsoft.com/en-gb/blog/architect-and-optimize-your-internet-traffic-with-azure-routing-preference/)
+- [Zero trust networking - lessons for leaders](https://www.microsoft.com/en-us/itshowcase/zero-trust-networking-sharing-lessons-for-leaders)
 
 ## Tagging
 - [Virtual network service tags](https://docs.microsoft.com/en-us/azure/virtual-network/service-tags-overview)
@@ -43,5 +47,20 @@ Links related to Azure Networking.
 - [How to Shut Off Public Connectivity to Azure SQL Database | Data Exposed](https://www.youtube.com/watch?v=9JVNX2JCmDQ)
 - [How to Architect an Azure Firewall with a VPN Gateway](https://petri.com/how-to-architect-an-azure-firewall-with-a-vpn-gateway)
 
+## sFTP
+- [https://charbelnemnom.com/how-to-deploy-sftp-service-on-microsoft-azure/](https://charbelnemnom.com/how-to-deploy-sftp-service-on-microsoft-azure/)
+
 ## Labs
 - [Creating a Site-to-Site VPN between your Lab & Azure](https://backupbits.wordpress.com/2019/03/27/creating-a-site-to-site-vpn-between-your-lab-azure/)
+
+## Routing
+- [Azure Routing explained in plain English with a story in 10 mins-User Defined Routes, Route priority](https://www.youtube.com/watch?app=desktop&v=tXLScLO-DRI&feature=youtu.be)
+
+## Monitoring
+- [Monitor your hybrid network with Network insights](https://techcommunity.microsoft.com/t5/azure-monitor/monitor-your-hybrid-network-with-network-insights/ba-p/2198281?_lrsc=6076d9cf-1d74-4191-a314-1a6f70ce89b8)
+
+## App Gateway
+- [About zone-redundant virtual network gateways in Azure Availability Zones](https://docs.microsoft.com/en-us/azure/vpn-gateway/about-zone-redundant-vnet-gateways)
+- [Autoscaling and Zone-redundant Application Gateway v2](https://docs.microsoft.com/en-us/azure/application-gateway/application-gateway-autoscaling-zone-redundant)
+- [Securing My Blog with Azure Web Application Firewall (WAF)](https://edi.wang/post/2020/8/7/securing-my-blog-with-azure-web-application-firewall-waf)
+- [Example Azure Web Application Firewall (WAF)](https://www.linickx.com/example-azure-web-application-firewall-waf)

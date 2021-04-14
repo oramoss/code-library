@@ -20,3 +20,10 @@ Links related to ARM.
 
 ## Best Practice
 - [10 Azure Resource Manager Template Proven Practices - Nashville Azure Users Group 18-Feb-2021](https://www.youtube.com/watch?app=desktop&v=VX9Sq4JDzIo&feature=youtu.be)
+- [How to troubleshoot Azure Resource Manager (ARM) template validation errors](https://keithbabinec.com/2019/06/01/how-to-troubleshoot-azure-resource-manager-arm-template-validation-errors/)
+- [Deploying ARM Templates with Artifacts Located in a Private GitHub Repository](https://blog.tyang.org/2017/05/19/deploying-arm-templates-with-artifacts-located-in-a-private-github-repository/)
+- [Use a deployment button to deploy templates from GitHub repository](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/deploy-to-azure-button)
+- [Tutorial: Deploy virtual machine extensions with ARM templates](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/template-tutorial-deploy-vm-extensions)
+
+## Powershell DSC
+- [Getting started with PowerShell Desired State Configuration (DSC)](https://octopus.com/blog/getting-started-with-powershell-dsc#:~:text=PowerShell%20DSC%20is%20an%20Infrastructure,configure%20your%20Windows%2Dbased%20computers.)
