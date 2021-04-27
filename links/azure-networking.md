@@ -64,3 +64,19 @@ Links related to Azure Networking.
 - [Autoscaling and Zone-redundant Application Gateway v2](https://docs.microsoft.com/en-us/azure/application-gateway/application-gateway-autoscaling-zone-redundant)
 - [Securing My Blog with Azure Web Application Firewall (WAF)](https://edi.wang/post/2020/8/7/securing-my-blog-with-azure-web-application-firewall-waf)
 - [Example Azure Web Application Firewall (WAF)](https://www.linickx.com/example-azure-web-application-firewall-waf)
+- [Application Gateway multiple site hosting](https://docs.microsoft.com/en-us/azure/application-gateway/multiple-site-overview)
+- [Locking Down Network Access to the Azure Application Gateway/Firewall](https://aidanfinn.com/?p=21474)
+- [Application gateway is in a failed state - How to edit resources without Portal](https://codedbeard.com/application-gateway-is-in-a-failed-state/)
+
+## NAT Gateway
+- [Step by Step Azure NAT Gateway – Static Outbound Public IP address](https://robertsmit.wordpress.com/2020/06/02/step-by-step-azure-nat-gateway-static-outbound-public-ip-address-ang-nat-wvd-azure-security-cloud-mvpbuzz-azops-itpro-virtualnetworks-powershell/#:~:text=You%20can%20use%20a%20public,your%20deployments%20is%20now%20easy.)
+- [Outbound NAT for Azure Virtual Machines](https://azurealan.ie/2020/04/27/outbound-nat-for-azure-virtual-machines/)
+
+## Firewall
+- [Use Azure Firewall as a DNS Proxy in a Hub and Spoke topology along with Private Endpoints](https://github.com/Azure/azure-quickstart-templates/tree/master/301-azure-firewall-dns-proxy)
+
+## Front Door
+- [Front Door APIM Service](https://github.com/MassimoC/front-door-apim-appservice)
+
+## App Service
+- [Azure App Service, Private Endpoint, and Application Gateway/WAF](https://aidanfinn.com/?p=22210)

@@ -11,6 +11,7 @@ Links related to ARM.
 - [Matt Felton Library](https://github.com/mattfeltonma/arm-templates/tree/master/examples)
 - [Deploying multiple copies of a resource](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/copy-resources)
 - [Deploying multiple copies of a resource 2](9)https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/copy-resources)
+- [User Assigned Identity using an ARM template for an App Service](https://gaunacode.com/app-service-user-assigned-identity-using-an-arm-template)
 
 ## Bicep
 - [ARM Templates and Bicep Roadmap with Azure MVPs September 2020](https://www.youtube.com/watch?v=-4E5DsC-RcU&feature=youtu.be)
@@ -27,3 +28,6 @@ Links related to ARM.
 
 ## Powershell DSC
 - [Getting started with PowerShell Desired State Configuration (DSC)](https://octopus.com/blog/getting-started-with-powershell-dsc#:~:text=PowerShell%20DSC%20is%20an%20Infrastructure,configure%20your%20Windows%2Dbased%20computers.)
+
+## Miscellaneous
+- [Application gateway is in a failed state - How to edit resources without Portal](https://codedbeard.com/application-gateway-is-in-a-failed-state/)

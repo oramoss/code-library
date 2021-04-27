@@ -17,3 +17,5 @@ Links related to Key Vault.
 - [Upload SSH Key to Key Vault for use in ADF](https://www.techtalkcorner.com/upload-ssh-key-azure-key-vault/)
 - [Azure Key Vault Logging and Events with Log Analytics](http://blogs.recneps.org/post/Azure-Key-Vault-Logging-and-Events-with-Log-Analytics)
 - [Automate the rotation of a secret for resources that have two sets of authentication credentials](https://docs.microsoft.com/en-us/azure/key-vault/secrets/tutorial-rotation-dual)
+- [Export PFX certificate for use in importing to App Gateway](https://coombes.nz/blog/azure-keyvault-export-certificate/)
+- [Issues with App Gateway and Key Vault integration for certs - fixed by manual resolution in above link](https://github.com/MicrosoftDocs/azure-docs/issues/33157)

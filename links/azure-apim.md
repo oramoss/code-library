@@ -14,3 +14,6 @@ Links related to Azure API Management Service (APIM).
 - [API Management Features](https://docs.microsoft.com/en-us/azure/api-management/api-management-features)
 - [Monitor published APIs](https://docs.microsoft.com/en-us/azure/api-management/api-management-howto-use-azure-monitor)
 - [How to log events to Azure Event Hubs in Azure API Management](https://docs.microsoft.com/en-us/azure/api-management/api-management-howto-log-event-hubs)
+
+## Techniques
+- [How To Test ASP.NET Core 5 Web API Service With Swagger](https://www.c-sharpcorner.com/article/how-to-test-asp-net-core-web-api-service-with-swagger/)
