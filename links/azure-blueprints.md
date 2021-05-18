@@ -10,6 +10,7 @@ Links related to Azure Blueprints.
 - [Azure Blueprints vs Azure Resource Manager template specs](https://techcommunity.microsoft.com/t5/itops-talk-blog/azure-blueprints-vs-azure-resource-manager-template-specs/ba-p/2176909?WT.mc_id=modinfra-0000-thmaure)
 - [ARCHITECT YOUR CLOUD WITH AZURE BLUEPRINTS](http://www.buchatech.com/2018/09/architect-your-cloud-with-azure-blueprints/)
 - [Managing Azure Blueprints with PowerShell](https://www.mssqltips.com/sqlservertip/6551/managing-azure-blueprints-with-powershell/)
+- [Getting Started with Azure Blueprints [With Step-by-Step Demo]](https://adamtheautomator.com/getting-started-with-azure-blueprints-with-step-by-step-demo/)
 
 ## Documentation
 - [Microsoft Main page for Blueprints](https://docs.microsoft.com/en-us/azure/governance/blueprints/)
@@ -21,3 +22,6 @@ Links related to Azure Blueprints.
 ## Videos
 - [Azure Friday - Overview of Blueprints](https://www.youtube.com/watch?v=cQ9D-d6KkMY&t=311s)
 - [Best of MS Ignite 2018](https://www.youtube.com/watch?v=OiOXlgFNgDo)
+
+## Policy
+- [Azure Policy - A collection of 8 posts](https://andrewmatveychuk.com/tag/azure-policy/)

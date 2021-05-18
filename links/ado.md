@@ -55,3 +55,4 @@ Links related to Azure DevOps.
 - [Migrating Code to Azure DevOps Repos (4 Different Scenarios)](https://www.dotnetcurry.com/devops/1540/code-migration-azure-devops)
 - [ADO Migration MS main page](https://azure.microsoft.com/en-us/services/devops/migrate/)
 - [Controlling Release Pipelines with Gates and Azure Policy Compliance](https://devblogs.microsoft.com/devops/controlling-release-pipelines-with-gates-and-azure-policy-compliance/)
+- [Azure DevOps Multi-Stage Pipelines](https://mediaglasses.blog/azure-devops-multi-stage-pipelines-bcbed581fa2d)

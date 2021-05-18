@@ -12,3 +12,5 @@ Links related to Azure Policy.
 - [Tutorial: Implement Azure Policy as Code with GitHub](https://docs.microsoft.com/en-us/azure/governance/policy/tutorials/policy-as-code-github)
 - [Azure Policy – Perform policy operations through Azure DevOps](https://techcommunity.microsoft.com/t5/azure-paas-blog/azure-policy-perform-policy-operations-through-azure-devops/ba-p/2045515)
 
+## Miscellaneous
+- [Azure Policy Testing - github](https://github.com/fawohlsc/azure-policy-testing)

@@ -30,6 +30,7 @@ Links related to Azure Data Factory.
 - [Upload SSH Key to Key Vault for use in ADF](https://www.techtalkcorner.com/upload-ssh-key-azure-key-vault/)
 - [Get ADF To Check For Running Pipeline Via Azure Management API](https://mrpaulandrew.com/2020/11/12/get-data-factory-to-check-itself-for-a-running-pipeline-via-the-azure-management-api/)
 - [Richard Swinbank ADF Testing Framework Series](https://richardswinbank.net/tag/adftesting?do=showtag&tag=adftesting)
+- [Creating a generic (template) pipeline in Azure Data Factory to send email messages with attached files from Azure Storage account](http://datanrg.blogspot.com/2021/05/creating-generic-template-pipeline-in.html?m=1)
 
 ## Training
 - [A Day Full Of ADF - Paul Andrew](https://github.com/mrpaulandrew/A-Day-Full-of-Azure-Data-Factory)

@@ -39,6 +39,7 @@ Links related to Azure Networking.
 - [AZURE FIREWALL VS NETWORK SECURITY GROUP (NSG)](https://darawtechie.com/2019/09/05/azure-firewall-vs-network-security-group-nsg/#:~:text=An%20NSG%20is%20a%20firewall,well%20as%20L7%20application%20traffic.)
 - [Architect and optimize your internet traffic with Azure routing preference](https://azure.microsoft.com/en-gb/blog/architect-and-optimize-your-internet-traffic-with-azure-routing-preference/)
 - [Zero trust networking - lessons for leaders](https://www.microsoft.com/en-us/itshowcase/zero-trust-networking-sharing-lessons-for-leaders)
+- [AZURE PRACTICAL: PEER-TO-PEER TRANSITIVE ROUTING](https://blog.ine.com/azure-practical-peer-to-peer-transitive-routing)
 
 ## Tagging
 - [Virtual network service tags](https://docs.microsoft.com/en-us/azure/virtual-network/service-tags-overview)
@@ -67,6 +68,8 @@ Links related to Azure Networking.
 - [Application Gateway multiple site hosting](https://docs.microsoft.com/en-us/azure/application-gateway/multiple-site-overview)
 - [Locking Down Network Access to the Azure Application Gateway/Firewall](https://aidanfinn.com/?p=21474)
 - [Application gateway is in a failed state - How to edit resources without Portal](https://codedbeard.com/application-gateway-is-in-a-failed-state/)
+- [Application Gateway infrastructure configuration](https://docs.microsoft.com/en-us/azure/application-gateway/configuration-infrastructure#network-security-groups)
+- [Deploying an ingress controller to an internal virtual network and fronted by an Azure Application Gateway with WAF](https://gaunacode.com/deploying-an-ingress-controller-to-an-internal-virtual-network-and-fronted-by-an-azure-application-gateway)
 
 ## NAT Gateway
 - [Step by Step Azure NAT Gateway – Static Outbound Public IP address](https://robertsmit.wordpress.com/2020/06/02/step-by-step-azure-nat-gateway-static-outbound-public-ip-address-ang-nat-wvd-azure-security-cloud-mvpbuzz-azops-itpro-virtualnetworks-powershell/#:~:text=You%20can%20use%20a%20public,your%20deployments%20is%20now%20easy.)
@@ -80,3 +83,8 @@ Links related to Azure Networking.
 
 ## App Service
 - [Azure App Service, Private Endpoint, and Application Gateway/WAF](https://aidanfinn.com/?p=22210)
+
+## VPN
+- [Reset a VPN gateway or a connection](https://docs.microsoft.com/en-gb/azure/vpn-gateway/reset-gateway)
+- [What is VPN Gateway?](https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-about-vpngateways)
+- [Highly Available Cross-Premises and VNet-to-VNet Connectivity](https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-highlyavailable)

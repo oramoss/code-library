@@ -11,10 +11,12 @@ Links related to Microsoft Synapse.
 ## General
 - [James Serra - Public Preview & Slide Deck](http://www.jamesserra.com/archive/2020/05/build-announcements-azure-synapse-analytics-in-public-preview-and-more/)
 - [When to use Azure Synapse Analytics and/or Azure Databricks?](https://www.element61.be/en/resource/when-use-azure-synapse-analytics-andor-azure-databricks)
+- [Azure SQL Data Warehouse deep dive into data distribution](https://medium.com/@ian.shchoy/azure-sql-data-warehouse-deep-dive-into-data-distribution-f4cf8f1e340a)
 
 ## Videos
 - [Intro to Azure Synapse Analytics](https://www.youtube.com/watch?v=BNNW1whKrIk&feature=youtu.be&utm_content=145801297&utm_medium=social&utm_source=linkedin&hss_channel=lcp-15210062)
 
 ## Training
+- [Azure Synapse Analytics - Serverless SQL Pool](https://www.hitachi-solutions.co.uk/blog/2021/05/azure-synapse-analytics---serverless-sql-pool-dv-ss/)
 - [Understand data warehouse developer features of Azure Synapse Analytics](https://docs.microsoft.com/en-us/learn/modules/understand-data-warehouse-developer-features-of-azure-synapse-analytics/)
 - [Work with Data Warehouses using Azure Synapse Analytics](https://docs.microsoft.com/en-us/learn/paths/work-with-data-warehouses-using-azure-synapse-analytics/)

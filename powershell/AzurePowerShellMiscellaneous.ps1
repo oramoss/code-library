@@ -3,10 +3,11 @@ Get-AzureVMImage| Select * | Out-Gridview –Passthru
 Get-AzureVMImage | Where-Object {$_.ImageName -eq "d570a118449e48fdbe814fb54b36b60e__hwx_sandbox_hdp_2_5v6"}
 
 #View the templates available
+$Location=uksouth
 Get-AzureRmVMImagePublisher -Location $Location #check all the publishers available
-Get-AzureRmVMImageOffer -Location $Location -PublisherName "Hortonworks" #look for offers for a publisher (Hortonworks)
-Get-AzureRmVMImageSku -Location $Location -PublisherName "Hortonworks" -Offer "hortonworks-sandbox" #view SKUs for an offer (hortonworks-sandbox)
-Get-AzureRmVMImage -Location $Location -PublisherName "Hortonworks" -Offer "hortonworks-sandbox" -Skus "sandbox25"
+Get-AzureRmVMImageOffer -Location $Location -PublisherName "microsoftsqlserver" #look for offers for a publisher (Hortonworks)
+Get-AzureRmVMImageSku -Location $Location -PublisherName "microsoftsqlserver" -Offer "sql2019-ws2019" #view SKUs for an offer (hortonworks-sandbox)
+Get-AzureRmVMImage -Location $Location -PublisherName "microsoftsqlserver" -Offer "sql2019-ws2019" -Skus "sandbox25"
 Get-AzureRmVMImage -Location $Location -PublisherName $Publisher -Offer $offer -Skus $Skus
 
 $PSVersionTable

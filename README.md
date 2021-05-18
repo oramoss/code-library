@@ -25,9 +25,12 @@ Here you will find various pieces of code, documentation and links across numero
 
 ## Links
 ### Microsoft
+- [Azure AD](./links/azure-AD.md)
 - [Azure API Management Service](./links/azure-apim.md)
 - [Azure App Service](./links/azure-app-service.md)
 - [Azure Architecture](./links/azure-architecture.md)
+- [Azure Automation](./links/azure-automation.md)
+- [Azure Bicep](./links/azure-bicep.md)
 - [Azure CAF](./links/azure-caf.md)
 - [Azure CLI](./links/az-cli.md)
 - [Azure Cloud Adoption Framework (CAF)](./links/azure-caf.md)

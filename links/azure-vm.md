@@ -27,9 +27,15 @@ Links related to Virtual Machine.
 - [Moving your Azure Virtual Machines has never been easier!](https://azure.microsoft.com/en-ca/blog/moving-your-azure-virtual-machines-has-never-been-easier/)
 - [Move Azure VMs into Availability Zones](https://docs.microsoft.com/en-us/azure/site-recovery/move-azure-vms-avset-azone)
 - [Lost RDP Access due to Firewall - reset method via Portal    ](https://serverfault.com/questions/769768/lost-rdp-access-to-vm-azure-after-firewall-changes)
+- [Optimizing VMs in Azure](https://virtualizationreview.com/articles/2018/08/07/optimizing-vms-in-azure.aspx)
 
 ## Imaging
 - [Creating An Azure VM From The VHDX/VHD File](https://www.c-sharpcorner.com/article/creating-an-azure-vm-from-the-vhdxvhd-file/)
 - [How to Merge Hyper-V Snapshots: A Step-By-Step Guide](https://www.nakivo.com/hyper-v-backup/merge-hyper-v-snapshots-step-step-guide/)
 - [Create a managed image of a generalized VM in Azure](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/capture-image-resource)
 - [Prepare a Windows VHD or VHDX to upload to Azure](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/prepare-for-upload-vhd-image)
+- [Create a WIM file from the WVD VHD file.](https://www.microcloud.nl/create-a-wim-file-from-the-wvd-vhd-file)
+- [bginfo tool](https://docs.microsoft.com/en-us/sysinternals/downloads/bginfo)
+
+## Hyper-V
+- [Hyper-V Network Adapters: What, Why, and How](https://www.nakivo.com/blog/hyper-v-network-adapters-what-why-and-how/)
