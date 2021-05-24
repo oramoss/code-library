@@ -13,12 +13,11 @@ Links related to ARM.
 - [Deploying multiple copies of a resource 2](9)https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/copy-resources)
 - [User Assigned Identity using an ARM template for an App Service](https://gaunacode.com/app-service-user-assigned-identity-using-an-arm-template)
 
-## Bicep
-- [ARM Templates and Bicep Roadmap with Azure MVPs September 2020](https://www.youtube.com/watch?v=-4E5DsC-RcU&feature=youtu.be)
-
 ## ARM Template Specs
 - [ARM Template Specs now GA!](https://dev.to/azure/arm-template-specs-now-ga-161a)
 - [Azure Resource Manager template specs](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/template-specs?tabs=azure-powershell)
+- [Introduction to Azure ARM Template Specs](https://dev.to/omiossec/azure-template-specs-1h42)
+- [Azure Resource Governance with Template Specs & Biceps](https://moimhossain.com/2020/11/27/azure-resource-governance-with-template-specs-biceps/)
 
 ## Parameter Files
 - [Parameter Files](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/parameter-files)
