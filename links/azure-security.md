@@ -8,6 +8,7 @@ Links related to Azure Security.
 - [What's the difference between Azure Security Center, Azure Defender and Azure Sentinel?](https://techcommunity.microsoft.com/t5/itops-talk-blog/what-s-the-difference-between-azure-security-center-azure/ba-p/2155188?WT.mc_id=modinfra-0000-pierrer)
 - [Ask the Expert: Azure security—Tips, tricks, best practices and things you should be thinking about](https://www.nigelfrank.com/blog/azure-security-tips-tricks-and-best-practices/?utm_source=DSMN8&utm_medium=LinkedIn)
 - [How much security is ‘enough’ security? Looking at Microsoft 365 Defender vs. Azure Sentinel](https://www.itpromentor.com/m365-defender-vs-sentinel/)
+- [Best practices for Azure RBAC](https://docs.microsoft.com/en-us/azure/role-based-access-control/best-practices)
 
 ## Tools
 - [SkyArk](https://github.com/cyberark/SkyArk)

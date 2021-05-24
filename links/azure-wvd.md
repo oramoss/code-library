@@ -20,3 +20,4 @@ Links related to Azure Windows Virtual Desktop.
 - [Troubleshooting connectivity from the RD Client to WVD Part 1 – Getting Started](https://virtuallyflatfeet.wordpress.com/2020/05/16/troubleshooting-connectivity-from-the-rd-client-to-wvd/)
 - [Troubleshooting connectivity from the RD Client to WVD Part 2 – Log Analytics](https://virtuallyflatfeet.wordpress.com/2020/05/25/troubleshooting-connectivity-from-the-rd-client-to-wvd-part-2-log-analytics/)
 - [Windows Virtual Desktop Migration Guide](https://abdulwkazi.com/2021/04/26/wvdmigrationguide/)
+- [Enterprise-scale support for the Windows Virtual Desktop construction set](https://lnkd.in/dn7V_Jg)

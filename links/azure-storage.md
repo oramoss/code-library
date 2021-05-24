@@ -23,3 +23,6 @@ Links related to Microsoft Storage.
 
 ## Costs
 - [Optimizing your storage costs with Azure Blob Storage | Azure Friday](https://www.youtube.com/watch?app=desktop&v=dcSFOxBXxh4)
+
+## Encryption
+- [Use Cases and Encrypted Managed Disks vs. Azure Disk Encryption](https://acloud.guru/forums/az-500-microsoft-azure-security-technologies/discussion/-M5HeEkrMJPJ98gRwOMS/Use%20Cases%20and%20Encrypted%20Managed%20Disks%20vs.%20Azure%20Disk%20Encryption#:~:text=There%20are%20differences%20in%20the,storage%20service%20and%20the%20VM.)

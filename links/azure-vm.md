@@ -19,6 +19,7 @@ Links related to Virtual Machine.
 
 ## Automation
 - [Azure Data Factory Solution to Start and Stop VM](https://www.techtalkcorner.com/start-and-stop-azure-vm/)
+- [Resource Manager template samples for agents in Azure Monitor](https://docs.microsoft.com/en-us/azure/azure-monitor/agents/resource-manager-agent)
 
 ## Miscellaneous
 - [Azure VMs and disabling NLA on domain level](https://docs.microsoft.com/en-us/answers/questions/268781/azure-vms-and-disabling-nla-on-domain-level.html)
