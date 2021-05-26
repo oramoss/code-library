@@ -9,6 +9,7 @@ Links related to Azure Cloud Architecture.
 - [Improving agility, performance, and resilience with new Azure infrastructure capabilities](https://azure.microsoft.com/en-gb/blog/improving-agility-performance-and-resilience-with-new-azure-infrastructure-capabilities/)
 - [Implementing a Layered Security Architecture with App Service Environments](https://docs.microsoft.com/en-us/azure/app-service/environment/app-service-app-service-environment-layered-security)
 - [Enterprise-Scale - Reference Implementation - Github](https://github.com/Azure/Enterprise-Scale)
+- [Microsoft cloud for enterprise architects illustrations](https://docs.microsoft.com/en-gb/microsoft-365/solutions/cloud-architecture-models?view=o365-worldwide#security)
 
 ### CAF
 - [The Beginner’s Guide to Microsoft’s Cloud Adoption Framework](https://n4stack.io/2020/05/13/beginners-guide-to-microsoft-cloud-adoption-framework/?utm_campaign=N4Stack%20-%20Azure%20Service%20Tiles&utm_content=161470645&utm_medium=social&utm_source=linkedin&hss_channel=lcp-29015331)

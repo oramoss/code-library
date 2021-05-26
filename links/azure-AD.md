@@ -6,3 +6,4 @@ Links related to Active Directory (AD) and Azure Active Directory (AAD).
 
 # Miscellaneous
 - [Deep Diver – Azure AD Conditional Access authentication context setup for custom apps and MS Cloud App Security](https://securecloud.blog/2021/05/22/deep-diver-azure-ad-conditional-access-authentication-context-setup-for-custom-apps-and-ms-cloud-app-security/amp/)
+- [Azure AD Exporter](https://github.com/microsoft/azureadexporter/)

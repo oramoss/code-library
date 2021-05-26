@@ -18,6 +18,8 @@ Links related to ARM.
 - [Azure Resource Manager template specs](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/template-specs?tabs=azure-powershell)
 - [Introduction to Azure ARM Template Specs](https://dev.to/omiossec/azure-template-specs-1h42)
 - [Azure Resource Governance with Template Specs & Biceps](https://moimhossain.com/2020/11/27/azure-resource-governance-with-template-specs-biceps/)
+- [Azure Template Specs managed via Azure DevOps with bicep](https://msftplayground.com/2021/03/azure-template-specs-managed-via-azure-devops/)
+- [Tutorial: Create a template spec with linked templates](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/template-specs-create-linked?tabs=azure-powershell)
 
 ## Parameter Files
 - [Parameter Files](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/parameter-files)
@@ -36,3 +38,4 @@ Links related to ARM.
 ## Miscellaneous
 - [Application gateway is in a failed state - How to edit resources without Portal](https://codedbeard.com/application-gateway-is-in-a-failed-state/)
 - [ARM template for Azure VM with Guest Configuration](https://azsec.azurewebsites.net/2020/03/22/arm-template-for-azure-vm-with-guest-configuration/)
+- [How to add Dependency Agent to VM in Azure using PowerShell and ARM Template](https://abcdazure.azurewebsites.net/how-to-add-dependency-agent-to-vm-in-azure-using-powershell-and-arm-template/)

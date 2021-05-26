@@ -10,3 +10,4 @@ Links related to Bicep.
 - [Azure Resource Governance with Template Specs & Biceps](https://moimhossain.com/2020/11/27/azure-resource-governance-with-template-specs-biceps/)
 - [Step-by-step: Deploy Bicep with Azure DevOps pipelines](https://4bes.nl/2021/04/18/step-by-step-deploy-bicep-with-azure-devops-pipelines/)
 - [Deploy Azure Bicep (ARM Templates) to Multiple Environments using Azure DevOps Pipelines](https://nicksnettravels.builttoroam.com/deploy-bicep-multiple-environments/)
+- [Running bicep within Azure DevOps Pipelines](https://msftplayground.com/2021/03/running-bicep-within-azure-devops-pipelines/)
