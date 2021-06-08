@@ -6,6 +6,7 @@ Links related to Azure App Service.
 - [App Service networking features](https://docs.microsoft.com/en-us/azure/app-service/networking-features)
 - [Understanding the Azure App Service file system](https://github.com/projectkudu/kudu/wiki/Understanding-the-Azure-App-Service-file-system)
 - [Host Multiple Application In a Single Azure App Service](https://www.c-sharpcorner.com/blogs/host-multiple-application-in-a-single-azure-app-service)
+- [Path based routing in Azure Application Gateway with Azure WebApps](https://www.domstamand.com/path-based-routing-in-azure-application-gateway-with-azure-webapps/)
 
 ## Migration
 - [Migrate your .NET web app or service to Azure App Service](https://docs.microsoft.com/en-us/dotnet/azure/migration/app-service)

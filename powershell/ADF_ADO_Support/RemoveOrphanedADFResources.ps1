@@ -16,6 +16,7 @@
 -- Jeff Moss    04-MAR-2020    Moved delete triggers to before delete pipelines in
 --                             in case they are referenced.
 -- Jeff Moss    08-MAR-2020    Added removal of Dataflows
+-- Jeff Moss    08-JUN-2021    Fixed code on Dataflows to use correct variable names
 -- -----------------------------------------------------------------------------
 #>
 #---------[Parameters]----------------------------------------------------------
@@ -52,10 +53,10 @@ $pipelinesNames = $pipelinesTemplate | ForEach-Object {$_.name.Substring(37, $_.
 $deletedpipelines = $pipelinesADF | Where-Object { $pipelinesNames -notcontains $_.Name }
 #dataflows
 Write-Output "Getting dataflows"
-$pipelinesADF = Get-AzDataFactoryV2Dataflow -DataFactoryName $DataFactoryName -ResourceGroupName $DataFactoryResourceGroupName
+$dataflowsADF = Get-AzDataFactoryV2Dataflow -DataFactoryName $DataFactoryName -ResourceGroupName $DataFactoryResourceGroupName
 $dataflowsTemplate = $resources | Where-Object { $_.type -eq "Microsoft.DataFactory/factories/dataflows" }
-$dataflowsNames = $pipelinesTemplate | ForEach-Object {$_.name.Substring(37, $_.name.Length-40)}
-$deleteddataflows = $pipelinesADF | Where-Object { $pipelinesNames -notcontains $_.Name }
+$dataflowsNames = $dataflowsTemplate | ForEach-Object {$_.name.Substring(37, $_.name.Length-40)}
+$deleteddataflows = $dataflowsADF | Where-Object { $pipelinesNames -notcontains $_.Name }
 #datasets
 Write-Output "Getting datasets"
 $datasetsADF = Get-AzDataFactoryV2Dataset -DataFactoryName $DataFactoryName -ResourceGroupName $DataFactoryResourceGroupName

@@ -12,6 +12,9 @@ Links related to Virtual Machine.
 
 ## DR
 - [Set up DR for IaaS VMs](https://techcommunity.microsoft.com/t5/itops-talk-blog/how-to-set-up-disaster-recovery-for-azure-iaas-vms/ba-p/1153807?WT.mc_id=twitter-social-thmaure)
+- [About networking in Azure VM disaster recovery](https://docs.microsoft.com/en-us/azure/site-recovery/azure-to-azure-about-networking)
+- [Tutorial: Fail over Azure VMs to a secondary region](https://docs.microsoft.com/en-us/azure/site-recovery/azure-to-azure-tutorial-failover-failback)
+- [How to restore Azure VM data in Azure portal](https://docs.microsoft.com/en-us/azure/backup/backup-azure-arm-restore-vms#cross-region-restore)
 
 ## Windows
 - [Error changing time zone in Windows Server 2019: Use the command line or PowerShell instead](https://4sysops.com/archives/error-changing-time-zone-in-windows-server-2019-use-the-command-line-or-powershell-instead/)

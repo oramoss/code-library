@@ -16,6 +16,7 @@ Links related to Microsoft SQL Database.
 ## Availability, DR, HA
 - [Always on Listeners](https://www.sqlshack.com/sql-server-always-on-listeners/)
 - [What is an Always On availability group?](https://docs.microsoft.com/en-us/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server?view=sql-server-ver15)
+- [Always On availability groups: a high-availability and disaster-recovery solution](https://docs.microsoft.com/en-us/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server?view=sql-server-ver15)
 
 ## SQL
 - [SQL Injection](https://docs.microsoft.com/en-us/sql/relational-databases/security/sql-injection?view=sql-server-ver15)
