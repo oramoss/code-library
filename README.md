@@ -13,7 +13,6 @@ Here you will find various pieces of code, documentation and links across numero
 - [Links](#Links)
 
 ## Software
-- [Kafka](./kafka/kafka.md)
 - [Powershell](./powershell/powershell.md)
 - [Shell](./shell/shell.md)
 - [SQL](./sql/sql.md)

@@ -32,6 +32,7 @@ Links related to Virtual Machine.
 - [Move Azure VMs into Availability Zones](https://docs.microsoft.com/en-us/azure/site-recovery/move-azure-vms-avset-azone)
 - [Lost RDP Access due to Firewall - reset method via Portal    ](https://serverfault.com/questions/769768/lost-rdp-access-to-vm-azure-after-firewall-changes)
 - [Optimizing VMs in Azure](https://virtualizationreview.com/articles/2018/08/07/optimizing-vms-in-azure.aspx)
+- [ENABLING DISK ENCRYPTION ON VIRTUAL MACHINES IN AZURE](https://www.fredrikengseth.com/enabling-disk-encryption-on-virtual-machines-in-azure/)
 
 ## Imaging
 - [Creating An Azure VM From The VHDX/VHD File](https://www.c-sharpcorner.com/article/creating-an-azure-vm-from-the-vhdxvhd-file/)
@@ -43,3 +44,6 @@ Links related to Virtual Machine.
 
 ## Hyper-V
 - [Hyper-V Network Adapters: What, Why, and How](https://www.nakivo.com/blog/hyper-v-network-adapters-what-why-and-how/)
+
+## Extensions
+- [ARM template for Azure VM with Guest Configuration](https://azsec.azurewebsites.net/2020/03/22/arm-template-for-azure-vm-with-guest-configuration/)

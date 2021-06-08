@@ -7,3 +7,6 @@ Links related to Azure Logic Apps.
 - [Connect to on-premises file systems with Azure Logic Apps](https://docs.microsoft.com/en-us/azure/logic-apps/logic-apps-using-file-connector)
 - [Using File Connector](https://docs.microsoft.com/en-us/azure/logic-apps/logic-apps-using-file-connector)
 - [SQL DB Connector configuration](https://stackoverflow.com/questions/60573454/in-azure-logic-apps-arm-template-what-are-the-possible-values-for-the-authtype)
+
+## Miscellaneous
+- [Blog post about Copying Azure files to SharePoint, comparing Logic App and Power Automate Flow for this, and Trust No One](http://datanrg.blogspot.com/2021/05/a-blog-post-about-copying-azure-files.html?m=1)
