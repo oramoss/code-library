@@ -1,6 +1,5 @@
 // Total billable executions 
 // Total billable executions by operation name. 
-// Total billable executions
 // resource_workflowName_s,
 AzureDiagnostics
 | where ResourceProvider == "MICROSOFT.LOGIC"
