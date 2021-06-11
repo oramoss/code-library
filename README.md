@@ -8,9 +8,6 @@ We have successfully applied a combination of analysis, consulting, technology, 
 
 Here you will find various pieces of code across numerous languages.
 
-## Contents
-- [Software](#Software)
-
 ## Software
 - [Powershell](./powershell/powershell.md)
 - [AZ CLI](./az-cli/az-cli.md)
