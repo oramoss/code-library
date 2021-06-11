@@ -12,6 +12,3 @@ Get-AzureADServicePrincipal -SearchString "2a4d218177ed6ed43aa3366162957144f56de
 //Get User Object by name:
 Get-AzureADUser -SearchString "???"
 
-# Install AzureAD
-# Elevated command prompt
-Install-Module MSOnline
