@@ -21,3 +21,6 @@ Get-AzureRmSubscription
 # Set the subscription using subscription ID
 Select-AzureRmSubscription -SubscriptionId xxxxx-xxxxx-xxxxxx-xxxx
 
+# Enable accelerated networking
+az account set -s "<subscription>"
+az network nic update -g "<resource group of the NIC>" -n "<NIC>" --accelerated-networking true
