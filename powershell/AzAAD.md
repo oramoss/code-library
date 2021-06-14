@@ -1,8 +1,14 @@
-﻿//Get User by Object id:
+﻿//Connect to Azure AD
 Connect-AzureAD
+
+//Get User by Object id:
+//Get-AzureADObjectByObjectId -ObjectIds <Object ID 1>, <Object ID 2>
 Get-AzureADObjectByObjectId -ObjectIds a9f4c1fb-b066-4db1-acd3-d819e8262ddc
-Get-AzureADObjectByObjectId -ObjectIds <Object ID 1>, <Object ID 2>
+
+//Get Service Principal by search string
 Get-AzureADServicePrincipal -SearchString "???"
+
+//Get Enterprise App
 Get-AzureADApplication -Filter "DisplayName eq '85059264bf72a35ea3abf8e960b8f892e5d1cd759db9d3fe93d9503b23fa825f'"
 Get-AzureADApplication -Filter "AppId eq 'add28e2d-300b-4bb4-bf41-69b51e3255bc'"
 Get-AzureADApplication -SearchString "85059264bf72a35ea3abf8e960b8f892e5d1cd759db9d3fe93d9503b23fa825f"
