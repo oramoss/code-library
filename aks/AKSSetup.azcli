@@ -1,0 +1,114 @@
+# Commands from MS Documentation to configure base AKS environment
+# https://github.com/mspnp/aks-secure-baseline
+
+Commands in AZ CLI unless otherwise stated.
+
+# 1:Prerequisites
+- https://github.com/mspnp/aks-secure-baseline/blob/main/01-prerequisites.md
+
+# Register the AKS-AzureKeyVaultSecretsProvider preview feature
+- https://docs.microsoft.com/en-gb/azure/aks/csi-secrets-store-driver#register-the-aks-azurekeyvaultsecretsprovider-preview-feature
+az feature register --namespace "Microsoft.ContainerService" --name "AKS-AzureKeyVaultSecretsProvider"
+az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKS-AzureKeyVaultSecretsProvider')].{Name:name,State:properties.state}"
+az provider register --namespace Microsoft.ContainerService
+# Register the EventgridPreview preview feature
+- https://docs.microsoft.com/en-gb/azure/aks/quickstart-event-grid#register-the-eventgridpreview-preview-feature
+az feature register --namespace "Microsoft.ContainerService" --name "EventgridPreview"
+az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EventgridPreview')].{Name:name,State:properties.state}"
+az provider register --namespace Microsoft.ContainerService
+
+# Clone/download this repo locally (PS/CMD)
+git clone https://github.com/mspnp/aks-secure-baseline.git
+cd aks-secure-baseline
+
+# 2: Generate Your Client-Facing and AKS Ingress Controller TLS Certificates: https://github.com/mspnp/aks-secure-baseline/blob/main/02-ca-certificates.md
+# In wsl ubuntu
+# Create the certificate for Azure Application Gateway with a common name of bicycle.oramoss.com
+openssl req -x509 -nodes -days 365 -newkey rsa:2048 -out appgw.crt -keyout appgw.key -subj "/CN=bicycle.oramoss.com/O=oramoss Bicycle"
+openssl pkcs12 -export -out appgw.pfx -in appgw.crt -inkey appgw.key -passout pass:
+# Base64 encode the client-facing certificate
+export APP_GATEWAY_LISTENER_CERTIFICATE=$(cat appgw.pfx | base64 | tr -d '\n')
+# Generate the wildcard certificate for the AKS Ingress Controller
+openssl req -x509 -nodes -days 365 -newkey rsa:2048 -out traefik-ingress-internal-aks-ingress-oramoss-com-tls.crt -keyout traefik-ingress-internal-aks-ingress-oramoss-com-tls.key -subj "/CN=*.aks-ingress.oramoss.com/O=oramoss Aks Ingress"
+# Base64 encode the AKS Ingress Controller certificate
+export AKS_INGRESS_CONTROLLER_CERTIFICATE_BASE64=$(cat traefik-ingress-internal-aks-ingress-oramoss-com-tls.crt | base64 | tr -d '\n')
+
+# 3: Prep for Azure Active Directory Integration
+- https://github.com/mspnp/aks-secure-baseline/blob/main/03-aad.md
+
+# Set Subscription
+az account set --subscription "Pay-As-You-Go"
+
+# Query and save your Azure subscription's tenant id.
+$TENANTID_AZURERBAC=$(az account show --query tenantId -o tsv)
+
+# Playing the role as the oramoss Bicycle Azure AD team, login into the tenant where Kubernetes Cluster API authorization will be associated with.
+az login -t $TENANTID_AZURERBAC --allow-no-subscriptions
+$TENANTID_K8SRBAC=$(az account show --query tenantId -o tsv)
+
+# Create/identify the Azure AD security group that is going to map to the Kubernetes Cluster Admin role cluster-admin
+$AADOBJECTID_GROUP_CLUSTERADMIN=$(az ad group create --display-name 'cluster-admins-bu0001a000800' --mail-nickname 'cluster-admins-bu0001a000800' --description "Principals in this group are cluster admins in the bu0001a000800 cluster." --query objectId -o tsv)
+
+# Create a "break-glass" cluster administrator user for your AKS cluster.
+$TENANTDOMAIN_K8SRBAC=$(az ad signed-in-user show --query 'userPrincipalName' -o tsv).substring($(az ad signed-in-user show --query 'userPrincipalName' -o tsv).indexof("@")+1)
+$AADOBJECTNAME_USER_CLUSTERADMIN="bu0001a000800-admin"
+$AADOBJECTID_USER_CLUSTERADMIN=$(az ad user create --display-name=${AADOBJECTNAME_USER_CLUSTERADMIN} --user-principal-name ${AADOBJECTNAME_USER_CLUSTERADMIN}@${TENANTDOMAIN_K8SRBAC} --force-change-password-next-login --password ChangeMebu0001a0008AdminChangeMe --query objectId -o tsv)
+
+# Add the cluster admin user(s) to the cluster admin security group.
+az ad group member add -g $AADOBJECTID_GROUP_CLUSTERADMIN --member-id $AADOBJECTID_USER_CLUSTERADMIN
+
+# Create/identify the Azure AD security group that is going to be a namespace reader.
+$AADOBJECTID_GROUP_A0008_READER=$(az ad group create --display-name 'cluster-ns-a0008-readers-bu0001a000800' --mail-nickname 'cluster-ns-a0008-readers-bu0001a000800' --description "Principals in this group are readers of namespace a0008 in the bu0001a000800 cluster." --query objectId -o tsv)
+$AADOBJECTID_GROUP_A0008_READER
+
+# 4: Deploy the Hub-Spoke Network Topology
+- https://github.com/mspnp/aks-secure-baseline/blob/main/04-networking.md
+
+az login -t $TENANTID_AZURERBAC
+
+# [This takes less than one minute to run.]
+az group create -n rg-enterprise-networking-hubs -l uksouth
+
+# [This takes less than one minute to run.]
+az group create -n rg-enterprise-networking-spokes -l uksouth
+
+# Create the regional network hub.
+# [This takes about five minutes to run.]
+az deployment group create -g rg-enterprise-networking-hubs -f C:\data\code\ap\aks-secure-baseline\networking\hub-default.json -p location=uksouth
+
+# Create the spoke that will be home to the AKS cluster and its adjacent resources.
+
+$RESOURCEID_VNET_HUB=$(az deployment group show -g rg-enterprise-networking-hubs -n hub-default --query properties.outputs.hubVnetId.value -o tsv)
+
+# [This takes about five minutes to run.]
+az deployment group create -g rg-enterprise-networking-spokes -f C:\data\code\ap\aks-secure-baseline\networking\spoke-BU0001A0008.json -p location=uksouth hubVnetResourceId="${RESOURCEID_VNET_HUB}"
+
+# Update the shared, regional hub deployment to account for the requirements of the spoke.
+$RESOURCEID_SUBNET_NODEPOOLS=$(az deployment group show -g rg-enterprise-networking-spokes -n spoke-BU0001A0008 --query properties.outputs.nodepoolSubnetResourceIds.value -o tsv)
+
+# [This takes about three minutes to run.]
+az deployment group create -g rg-enterprise-networking-hubs -f C:\data\code\ap\aks-secure-baseline\networking\hub-regionA.json -p location=uksouth nodepoolSubnetResourceIds="['${RESOURCEID_SUBNET_NODEPOOLS}']"
+
+# 5: Deploy the AKS Cluster
+- https://github.com/mspnp/aks-secure-baseline/blob/main/05-aks-cluster.md
+
+# Clearup, if rerunning
+az keyvault purge --name kv-aks-kjri5y3beoxt4
+az group delete --name rg-bu0001a0008
+
+# Create the AKS cluster resource group.
+# [This takes less than one minute.]
+az group create --name rg-bu0001a0008 --location uksouth
+
+# Get the AKS cluster spoke VNet resource ID.
+$RESOURCEID_VNET_CLUSTERSPOKE=$(az deployment group show -g rg-enterprise-networking-spokes -n spoke-BU0001A0008 --query properties.outputs.clusterVnetResourceId.value -o tsv)
+
+# Deploy the cluster ARM template
+# [This takes about 15 minutes.]
+$AADOBJECTID_GROUP_CLUSTERADMIN
+$AADOBJECTID_GROUP_A0008_READER
+$TENANTID_K8SRBAC
+$APP_GATEWAY_LISTENER_CERTIFICATE
+#az deployment group create -g rg-bu0001a0008 -f C:\data\code\ap\aks-secure-baseline\cluster-stamp.json -p targetVnetResourceId=${RESOURCEID_VNET_CLUSTERSPOKE} clusterAdminAadGroupObjectId=${AADOBJECTID_GROUP_CLUSTERADMIN} a0008NamespaceReaderAadGroupObjectId=${AADOBJECTID_GROUP_A0008_READER} k8sControlPlaneAuthorizationTenantId=${TENANTID_K8SRBAC} appGatewayListenerCertificate=${APP_GATEWAY_LISTENER_CERTIFICATE} aksIngressControllerCertificate=${AKS_INGRESS_CONTROLLER_CERTIFICATE_BASE64}
+az deployment group create --resource-group rg-bu0001a0008 --template-file C:\data\code\ap\aks-secure-baseline\cluster-stamp.json --parameters C:\data\code\ap\aks-secure-baseline\azuredeploy.parameters.prod.json
+

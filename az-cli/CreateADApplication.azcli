@@ -1,0 +1,46 @@
+# Set environment variables as per following examples, then run this script:
+# $siteName="test"
+# $siteRG="Test-rg"
+# $subscription="Test-sub"
+
+# Set Subscription
+az account set --subscription "$subscription"
+
+# Create application
+$appId = (az ad app create --display-name '$siteName' `
+                           --homepage https://$siteName.azurewebsites.net `
+                           --identifier-uris https://$siteName.azurewebsites.net `
+                           --reply-urls https://$siteName.azurewebsites.net/.auth/login/aad/callback `
+                           --query 'appId' `
+                           --output tsv)
+Write-Host "App ID: $appId"
+      
+# Add permission to sign in and read user profile
+az ad app permission add --id $appId `
+                         --api 00000002-0000-0000-c000-000000000000 `
+                         --api-permissions 311a71cc-e848-46a1-bdf8-97ff7156d8e6=Scope
+
+az ad sp create --id $appId
+
+az ad app permission grant --id $appId `
+                         --api 00000002-0000-0000-c000-000000000000 
+      
+# Generate new client secret
+$password = (head /dev/urandom | tr -dc [:alnum:] | fold -w 30 | head -n 1)
+# Set client secret
+az ad app credential reset --id $appId `
+                           --password $password `
+                           --output none
+
+# Update Web App Authentication
+az webapp auth update --name "$siteName" `
+                      --resource-group "$siteRG" `
+                      --enabled true `
+                      --action LoginWithAzureActiveDirectory `
+                      --aad-client-id "$appId" `
+                      --aad-client-secret "$password" `
+                      --token-store true `
+                      --output none
+
+#az webapp auth show --name $siteName --resource-group $siteRG
+

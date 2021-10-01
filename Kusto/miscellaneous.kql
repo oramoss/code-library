@@ -7,3 +7,28 @@ AzureDiagnostics
 | where OperationName has "workflowTriggerStarted" or OperationName has "workflowActionStarted" 
 | where TimeGenerated between (todatetime("2020-08-24 00:00:00.0") .. todatetime("2020-08-30 23:59:59.0"))
 | summarize dcount(resource_runId_s) by OperationName, startofday(TimeGenerated)
+
+
+// Get traffic across peered network via NSG Flow logs 
+// Run from logs on one end of Peer searching for IP address prefix on other side of peer
+AzureNetworkAnalytics_CL
+| where SubType_s == 'FlowLog'
+    and (FASchemaVersion_s == '1' or FASchemaVersion_s == '2')
+    and FlowStartTime_t between (datetime('2021-08-04T08:20:29.248Z')..datetime('2021-08-05T08:20:29.248Z'))
+    and FlowType_s != 'ExternalPublic'
+    and (SrcIP_s contains "172.16.158" or DestIP_s contains "172.16.158")
+| sort by SrcIP_s,DestIP_s
+
+// Client IPs accessing an App Service over a period of time. (For use in IP locking)
+let start=datetime("2021-04-28T09:46:00.000Z");
+let end=datetime("2021-09-28T10:46:00.000Z");
+let timeGrain=1m;
+let dataset=requests
+    // additional filters can be applied here
+    | where timestamp > start and timestamp < end
+    | where client_Type != "Browser"
+;
+dataset
+// change 'operation_Name' on the below line to segment by a different property
+| summarize count_=sum(itemCount), avg(duration), percentiles(duration, 50, 95, 99) by client_IP
+| order by count_ desc
