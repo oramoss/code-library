@@ -32,3 +32,12 @@ dataset
 // change 'operation_Name' on the below line to segment by a different property
 | summarize count_=sum(itemCount), avg(duration), percentiles(duration, 50, 95, 99) by client_IP
 | order by count_ desc
+
+// Resources count by Subscription
+Resources
+| join kind=leftouter (ResourceContainers | where type=='microsoft.resources/subscriptions' | project SubName=name, subscriptionId) on subscriptionId
+| project SubName, type, name
+| summarize count(type) by SubName
+
+| where type == "microsoft.logic/workflows" 
+| where SubName == "SportsDirect.com - Security" 
