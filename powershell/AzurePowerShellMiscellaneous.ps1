@@ -21,3 +21,6 @@ Remove-AzureRmStorageAccount -ResourceGroupName $ResourceGroupName -Name $Storag
 Remove-AzureRmNetworkInterface -Name ServerInterface01 -Force -ResourceGroupName $ResourceGroupName
 Remove-AzureRmPublicIpAddress -Name $InterfaceName -Force -ResourceGroupName $ResourceGroupName
 Remove-AzureRmVirtualNetwork -Name $VNetName -ResourceGroupName $ResourceGroupName -Force
+
+# Get Correlation from Azure Activity Log
+Get-AzLog -CorrelationId <Correlation ID> -DetailedOutput
