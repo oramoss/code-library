@@ -41,3 +41,28 @@ Resources
 
 | where type == "microsoft.logic/workflows" 
 | where SubName == "SportsDirect.com - Security" 
+
+// Unallocated NSGs
+Resources
+| where type has "microsoft.network/networkinterfaces"
+| where properties !has 'privateLinkConnectionProperties'
+| where properties !has 'virtualmachine'
+| project id, resourceGroup, location, subscriptionId
+
+// Orphaned Disks
+// Disks no longer attached to a VM
+// Click the "Run query" command above to execute the query and see results.
+Resources
+| where type has "microsoft.compute/disks"
+| extend diskState = tostring(properties.diskState)
+| where (managedBy == "" and diskState != 'ActiveSAS') or diskState == 'Unattached'
+| project id, diskState, resourceGroup, location, subscriptionId, managedBy
+
+// Orphaned NICs
+// NICs no longer attached to a VM
+// Click the "Run query" command above to execute the query and see results.
+Resources
+| where type has "microsoft.network/networkinterfaces"
+| where properties !has 'virtualmachine'
+| where properties !has 'privateLinkConnectionProperties'
+| project properties,id, resourceGroup, location, subscriptionId
