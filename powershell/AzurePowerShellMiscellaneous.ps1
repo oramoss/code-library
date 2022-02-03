@@ -3,12 +3,12 @@ Get-AzureVMImage| Select * | Out-Gridview –Passthru
 Get-AzureVMImage | Where-Object {$_.ImageName -eq "d570a118449e48fdbe814fb54b36b60e__hwx_sandbox_hdp_2_5v6"}
 
 #View the templates available
-$Location=uksouth
-Get-AzureRmVMImagePublisher -Location $Location #check all the publishers available
-Get-AzureRmVMImageOffer -Location $Location -PublisherName "redhat" #look for offers for a publisher (Hortonworks)
-Get-AzureRmVMImageSku -Location $Location -PublisherName "redhat" -Offer "RHEL" #view SKUs for an offer (hortonworks-sandbox)
-Get-AzureRmVMImage -Location $Location -PublisherName "redhat" -Offer "RHEL" -Skus "7.8"
-Get-AzureRmVMImage -Location $Location -PublisherName $Publisher -Offer $offer -Skus $Skus
+$Location="uksouth"
+Get-AzVMImagePublisher -Location $Location #check all the publishers available
+Get-AzVMImageOffer -Location $Location -PublisherName "MicrosoftWindowsServer" #look for offers for a publisher (Hortonworks)
+Get-AzVMImageSku -Location $Location -PublisherName "MicrosoftWindowsServer" -Offer "WindowsServer" #view SKUs for an offer (hortonworks-sandbox)
+Get-AzVMImage -Location $Location -PublisherName "MicrosoftWindowsServer" -Offer "RHEL" -Skus "7.8"
+Get-AzVMImage -Location $Location -PublisherName $Publisher -Offer $offer -Skus $Skus
 
 $PSVersionTable
 
@@ -24,3 +24,7 @@ Remove-AzureRmVirtualNetwork -Name $VNetName -ResourceGroupName $ResourceGroupNa
 
 # Get Correlation from Azure Activity Log
 Get-AzLog -CorrelationId <Correlation ID> -DetailedOutput
+
+# Get RBAC for a User...
+Get-AzRoleAssignment -ObjectId "ObjectID"
+Get-AzRoleAssignment -SignInName "UPN"
