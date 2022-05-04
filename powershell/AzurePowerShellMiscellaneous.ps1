@@ -5,19 +5,13 @@ Get-AzureVMImage | Where-Object {$_.ImageName -eq "d570a118449e48fdbe814fb54b36b
 #View the templates available
 $Location="uksouth"
 Get-AzVMImagePublisher -Location $Location #check all the publishers available
-Get-AzVMImageOffer -Location $Location -PublisherName "MicrosoftWindowsServer" #look for offers for a publisher (Hortonworks)
-Get-AzVMImageSku -Location $Location -PublisherName "MicrosoftWindowsServer" -Offer "WindowsServer" #view SKUs for an offer (hortonworks-sandbox)
-Get-AzVMImage -Location $Location -PublisherName "MicrosoftWindowsServer" -Offer "RHEL" -Skus "7.8"
-Get-AzVMImage -Location $Location -PublisherName $Publisher -Offer $offer -Skus $Skus
+Get-AzVMImageOffer -Location $Location -PublisherName "microsoftwindowsdesktop"
+Get-AzVMImageSku -Location $Location -PublisherName "microsoftwindowsdesktop" -Offer "office-365"
+Get-AzVMImage -Location $Location -PublisherName "microsoftwindowsdesktop" -Offer "office-365" -Skus "win10-21h2-avd-m365-g2"
 
-Get-AzVMImagePublisher -Location $Location #check all the publishers available
-Get-AzVMImageOffer -Location $Location -PublisherName "RedHat" #look for offers for a publisher (Hortonworks)
-Get-AzVMImageSku -Location $Location -PublisherName "RedHat" -Offer "RHEL" #view SKUs for an offer (hortonworks-sandbox)
-Get-AzVMImage -Location $Location -PublisherName "RedHat" -Offer "RHEL" -Skus "8_5"
 Get-AzVMImage -Location $Location -PublisherName $Publisher -Offer $offer -Skus $Skus
 
 $PSVersionTable
-
 
 # Removing stuff...
 $OSDiskName = Get-AzureRmDisk -ResourceGroupName $ResourceGroupName | Select Name
