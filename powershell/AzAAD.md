@@ -3,7 +3,7 @@ Connect-AzureAD
 
 //Get User by Object id:
 //Get-AzureADObjectByObjectId -ObjectIds <Object ID 1>, <Object ID 2>
-Get-AzureADObjectByObjectId -ObjectIds 64f2044f-bc87-400b-87af-d22336cb5225
+Get-AzureADObjectByObjectId -ObjectIds 963a039c-ed08-49fb-82dc-704e02301ba3
 
 //Get Service Principal by search string
 Get-AzureADServicePrincipal -SearchString "d17b1097-3824-40f3-ae2e-9bf2c36c7caf"
