@@ -15,7 +15,7 @@
 #---------[Parameters]----------------------------------------------------------
 
 Write-Output '"Subscription Name","VNET Name","Location","VNET Resource Group","VNET CIDR(s)","Subnet Count","Subnet Name","Subnet CIDR(s)'
-$Subscriptions = Get-AzSubscription
+$Subscriptions = Get-AzSubscription | Where-Object {($_.Name -ne "Access to Azure Active Directory") -and ($_.State -eq "Enabled")}
 ForEach ($Subscription in $Subscriptions) {
   Set-AzContext $Subscription.Name | Out-null
   $VNETs = Get-AzVirtualNetwork
