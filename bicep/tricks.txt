@@ -1,0 +1,1 @@
+vnetRouteAllEnabled: vnetSubnetId == '' ? false : true
