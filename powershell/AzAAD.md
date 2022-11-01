@@ -16,5 +16,5 @@ Get-AzureADServicePrincipal -SearchString "85059264bf72a35ea3abf8e960b8f892e5d1c
 Get-AzureADServicePrincipal -SearchString "2a4d218177ed6ed43aa3366162957144f56de40c903a868409324c2aaaad7628" | Format-List -Property *
 
 //Get User Object by name:
-Get-AzureADUser -SearchString "d17b1097-3824-40f3-ae2e-9bf2c36c7caf"
-
+Get-AzureADUser -SearchString "2e458a30-8d46-4a1c-90bf-fddbf46dcb9d"
+Get-AzureADApplication -Filter "AppId eq '2e458a30-8d46-4a1c-90bf-fddbf46dcb9d'"

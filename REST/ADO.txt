@@ -1,0 +1,2 @@
+# Get project id of ADO Projects
+https://dev.azure.com/venndigital/_apis/projects?api-version=5.0-preview.3
