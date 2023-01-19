@@ -28,3 +28,7 @@ Get-AzLog -CorrelationId <Correlation ID> -DetailedOutput
 # Get RBAC for a User...
 Get-AzRoleAssignment -ObjectId "ObjectID"
 Get-AzRoleAssignment -SignInName "UPN"
+
+# Get Policy Aliases with ensuring the ellipsis is enumerated...
+$FormatEnumerationLimit=-1 
+PS /home/jeff> Get-AzPolicyAlias -Namespacematch 'compute'|select aliases | ft -auto -wrap
