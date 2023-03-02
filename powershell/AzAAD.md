@@ -18,3 +18,6 @@ Get-AzureADServicePrincipal -SearchString "2a4d218177ed6ed43aa3366162957144f56de
 //Get User Object by name:
 Get-AzureADUser -SearchString "2e458a30-8d46-4a1c-90bf-fddbf46dcb9d"
 Get-AzureADApplication -Filter "AppId eq '2e458a30-8d46-4a1c-90bf-fddbf46dcb9d'"
+
+// Get group membership of a person
+Get-AzureADUserMembership -ObjectId $(Get-AzADUser -SearchString "James Denning").Id| select DisplayName,ObjectId,Description | ft
