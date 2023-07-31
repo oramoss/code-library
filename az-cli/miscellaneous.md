@@ -17,3 +17,8 @@ az account set --subscription <subscription name or id>
 
 # List editions for sql db in a location
 az sql db list-editions -l uksouth -o table
+
+# AZ DevOps
+az devops configure --defaults organization=https://dev.azure.com/rev-log
+az devops security group membership list --id "[IaC]\Contributors"
+az devops security group membership add --group-id "[IaC]\Contributors" --member-id [TEAM FOUNDATION]\\RLG-DELG-LAAD-AZ-OrderManagement-Engineer

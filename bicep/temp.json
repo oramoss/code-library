@@ -1,0 +1,865 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "subscriptionId": {
+            "value": "00c77a26-88d2-4b10-b2b6-59f0e4e25a22"
+        },
+        "name": {
+            "value": "tntdevlogicapp"
+        },
+        "location": {
+            "value": "West Europe"
+        },
+        "hostingPlanName": {
+            "value": "ASP-tntlogicamsdevrg-8b45"
+        },
+        "serverFarmResourceGroup": {
+            "value": "tnt-logic-ams-dev-rg"
+        },
+        "alwaysOn": {
+            "value": false
+        },
+        "ftpsState": {
+            "value": "FtpsOnly"
+        },
+        "storageAccountName": {
+            "value": "tntlogicamsdevrg93f9"
+        },
+        "sku": {
+            "value": "WorkflowStandard"
+        },
+        "skuCode": {
+            "value": "WS1"
+        },
+        "numberOfWorkers": {
+            "value": "3"
+        },
+        "workerSize": {
+            "value": "3"
+        },
+        "workerSizeId": {
+            "value": "3"
+        },
+        "use32BitWorkerProcess": {
+            "value": false
+        },
+        "netFrameworkVersion": {
+            "value": "v6.0"
+        }
+    }
+}
+
+{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "subscriptionId": {
+            "type": "string"
+        },
+        "name": {
+            "type": "string"
+        },
+        "location": {
+            "type": "string"
+        },
+        "hostingPlanName": {
+            "type": "string"
+        },
+        "serverFarmResourceGroup": {
+            "type": "string"
+        },
+        "alwaysOn": {
+            "type": "bool"
+        },
+        "use32BitWorkerProcess": {
+            "type": "bool"
+        },
+        "ftpsState": {
+            "type": "string"
+        },
+        "storageAccountName": {
+            "type": "string"
+        },
+        "netFrameworkVersion": {
+            "type": "string"
+        },
+        "sku": {
+            "type": "string"
+        },
+        "skuCode": {
+            "type": "string"
+        },
+        "workerSize": {
+            "type": "string"
+        },
+        "workerSizeId": {
+            "type": "string"
+        },
+        "numberOfWorkers": {
+            "type": "string"
+        }
+    },
+    "variables": {
+        "inboundSubnetDeployment": "inboundSubnetDeployment",
+        "outboundSubnetDeployment": "outboundSubnetDeployment",
+        "storageSubnetDeployment": "storageSubnetDeployment",
+        "inboundPrivateDnsZoneName": "privatelink.azurewebsites.net",
+        "inboundPrivateDnsZoneARecordName": "inboundPrivateDnsZoneARecordName",
+        "privateEndpointStorageFileName": "[format('{0}-file-private-endpoint', parameters('storageAccountName'))]",
+        "privateEndpointStorageTableName": "[format('{0}-table-private-endpoint', parameters('storageAccountName'))]",
+        "privateEndpointStorageBlobName": "[format('{0}-blob-private-endpoint', parameters('storageAccountName'))]",
+        "privateEndpointStorageQueueName": "[format('{0}-queue-private-endpoint', parameters('storageAccountName'))]",
+        "privateStorageFileDnsZoneName": "[format('privatelink.file.{0}', environment().suffixes.storage)]",
+        "privateStorageTableDnsZoneName": "[format('privatelink.table.{0}', environment().suffixes.storage)]",
+        "privateStorageBlobDnsZoneName": "[format('privatelink.blob.{0}', environment().suffixes.storage)]",
+        "privateStorageQueueDnsZoneName": "[format('privatelink.queue.{0}', environment().suffixes.storage)]"
+    },
+    "resources": [
+        {
+            "apiVersion": "2018-11-01",
+            "name": "[parameters('name')]",
+            "type": "Microsoft.Web/sites",
+            "kind": "functionapp,workflowapp",
+            "location": "[parameters('location')]",
+            "tags": {
+                "hidden-link: /app-insights-resource-id": "/subscriptions/00c77a26-88d2-4b10-b2b6-59f0e4e25a22/resourceGroups/tnt-logic-ams-dev-rg/providers/Microsoft.Insights/components/tntdevlogicapp"
+            },
+            "dependsOn": [
+                "microsoft.insights/components/tntdevlogicapp",
+                "[concat('Microsoft.Web/serverfarms/', parameters('hostingPlanName'))]",
+                "[concat('Microsoft.Storage/storageAccounts/', parameters('storageAccountName'))]"
+            ],
+            "properties": {
+                "name": "[parameters('name')]",
+                "siteConfig": {
+                    "appSettings": [
+                        {
+                            "name": "FUNCTIONS_EXTENSION_VERSION",
+                            "value": "~4"
+                        },
+                        {
+                            "name": "FUNCTIONS_WORKER_RUNTIME",
+                            "value": "node"
+                        },
+                        {
+                            "name": "WEBSITE_NODE_DEFAULT_VERSION",
+                            "value": "~16"
+                        },
+                        {
+                            "name": "APPINSIGHTS_INSTRUMENTATIONKEY",
+                            "value": "[reference('microsoft.insights/components/tntdevlogicapp', '2015-05-01').InstrumentationKey]"
+                        },
+                        {
+                            "name": "APPLICATIONINSIGHTS_CONNECTION_STRING",
+                            "value": "[reference('microsoft.insights/components/tntdevlogicapp', '2015-05-01').ConnectionString]"
+                        },
+                        {
+                            "name": "AzureWebJobsStorage",
+                            "value": "[concat('DefaultEndpointsProtocol=https;AccountName=',parameters('storageAccountName'),';AccountKey=',listKeys(resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName')), '2019-06-01').keys[0].value,';EndpointSuffix=','core.windows.net')]"
+                        },
+                        {
+                            "name": "WEBSITE_CONTENTAZUREFILECONNECTIONSTRING",
+                            "value": "[concat('DefaultEndpointsProtocol=https;AccountName=',parameters('storageAccountName'),';AccountKey=',listKeys(resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName')), '2019-06-01').keys[0].value,';EndpointSuffix=','core.windows.net')]"
+                        },
+                        {
+                            "name": "WEBSITE_CONTENTSHARE",
+                            "value": "tntdevlogicappae69"
+                        },
+                        {
+                            "name": "AzureFunctionsJobHost__extensionBundle__id",
+                            "value": "Microsoft.Azure.Functions.ExtensionBundle.Workflows"
+                        },
+                        {
+                            "name": "AzureFunctionsJobHost__extensionBundle__version",
+                            "value": "[1.*, 2.0.0)"
+                        },
+                        {
+                            "name": "APP_KIND",
+                            "value": "workflowApp"
+                        }
+                    ],
+                    "cors": {},
+                    "use32BitWorkerProcess": "[parameters('use32BitWorkerProcess')]",
+                    "ftpsState": "[parameters('ftpsState')]",
+                    "vnetRouteAllEnabled": true,
+                    "netFrameworkVersion": "[parameters('netFrameworkVersion')]"
+                },
+                "serverFarmId": "[concat('/subscriptions/', parameters('subscriptionId'),'/resourcegroups/', parameters('serverFarmResourceGroup'), '/providers/Microsoft.Web/serverfarms/', parameters('hostingPlanName'))]",
+                "clientAffinityEnabled": false,
+                "virtualNetworkSubnetId": "/subscriptions/00c77a26-88d2-4b10-b2b6-59f0e4e25a22/resourceGroups/tnt-net-ams-dev-rg/providers/Microsoft.Network/virtualNetworks/tnt-ams-dev-vn01/subnets/tnt-asp-win-ams-dev-sn01",
+                "httpsOnly": true,
+                "publicNetworkAccess": "Disabled"
+            },
+            "identity": {
+                "type": "SystemAssigned"
+            }
+        },
+        {
+            "apiVersion": "2018-11-01",
+            "name": "[parameters('hostingPlanName')]",
+            "type": "Microsoft.Web/serverfarms",
+            "location": "[parameters('location')]",
+            "kind": "",
+            "tags": {},
+            "dependsOn": [],
+            "properties": {
+                "name": "[parameters('hostingPlanName')]",
+                "workerSize": "[parameters('workerSize')]",
+                "workerSizeId": "[parameters('workerSizeId')]",
+                "numberOfWorkers": "[parameters('numberOfWorkers')]",
+                "maximumElasticWorkerCount": "20",
+                "zoneRedundant": true
+            },
+            "sku": {
+                "Tier": "[parameters('sku')]",
+                "Name": "[parameters('skuCode')]"
+            }
+        },
+        {
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2020-07-01",
+            "name": "[variables('inboundSubnetDeployment')]",
+            "resourceGroup": "tnt-net-ams-dev-rg",
+            "subscriptionId": "00c77a26-88d2-4b10-b2b6-59f0e4e25a22",
+            "properties": {
+                "mode": "Incremental",
+                "template": {
+                    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+                    "contentVersion": "1.0.0.0",
+                    "parameters": {},
+                    "variables": {},
+                    "resources": [
+                        {
+                            "type": "Microsoft.Network/virtualNetworks/subnets",
+                            "apiVersion": "2020-07-01",
+                            "name": "tnt-ams-dev-vn01/tnt-web-ams-dev-sn01",
+                            "properties": {
+                                "delegations": [],
+                                "serviceEndpoints": [],
+                                "provisioningState": "Succeeded",
+                                "addressPrefix": "172.20.104.64/26",
+                                "networkSecurityGroup": {
+                                    "id": "/subscriptions/00c77a26-88d2-4b10-b2b6-59f0e4e25a22/resourceGroups/tnt-net-ams-dev-rg/providers/Microsoft.Network/networkSecurityGroups/tnt-ams-dev-web-nsg01"
+                                },
+                                "routeTable": {
+                                    "id": "/subscriptions/00c77a26-88d2-4b10-b2b6-59f0e4e25a22/resourceGroups/tnt-net-ams-dev-rg/providers/Microsoft.Network/routeTables/tnt-ams-dev-udr01"
+                                },
+                                "ipConfigurations": [
+                                    {
+                                        "id": "/subscriptions/00c77a26-88d2-4b10-b2b6-59f0e4e25a22/resourceGroups/tnt-app-ams-dev-rg/providers/Microsoft.Network/networkInterfaces/tnt-identity-ams-dev-as-pep.nic.22d780f3-de72-4c92-a13c-cc7f11d9815c/ipConfigurations/privateEndpointIpConfig.b27da0d4-c258-4fe8-b670-9e47c18a8010"
+                                    },
+                                    {
+                                        "id": "/subscriptions/00c77a26-88d2-4b10-b2b6-59f0e4e25a22/resourceGroups/tnt-app-ams-dev-rg/providers/Microsoft.Network/networkInterfaces/tnt-supply-chain-web-app-ams-dev-as-pep.nic.3c43d794-15e4-4552-afec-93fb6a60f4ba/ipConfigurations/privateEndpointIpConfig.2373c738-a2c3-4e76-8c9c-5bc3df84fd13"
+                                    },
+                                    {
+                                        "id": "/subscriptions/00c77a26-88d2-4b10-b2b6-59f0e4e25a22/resourceGroups/tnt-app-ams-dev-rg/providers/Microsoft.Network/networkInterfaces/tnt-transaction-web-app-ams-dev-as-pep.nic.5b74c93e-5ecc-4202-993d-fe4792e4e2ff/ipConfigurations/privateEndpointIpConfig.16462570-8e62-45c8-80f2-a6830d90e5ca"
+                                    },
+                                    {
+                                        "id": "/subscriptions/00c77a26-88d2-4b10-b2b6-59f0e4e25a22/resourceGroups/tnt-app-ams-dev-rg/providers/Microsoft.Network/networkInterfaces/tnt-email-web-api-ams-dev-as-pep.nic.73db5cac-db19-4dbb-aff3-f22fd954292c/ipConfigurations/privateEndpointIpConfig.c6f7a941-a280-4824-af59-772da9e72617"
+                                    },
+                                    {
+                                        "id": "/subscriptions/00c77a26-88d2-4b10-b2b6-59f0e4e25a22/resourceGroups/tnt-app-ams-dev-rg/providers/Microsoft.Network/networkInterfaces/tnt-document-web-api-ams-dev-as-pep.nic.44fe682f-f002-4d7b-a3b1-4794a19fa56a/ipConfigurations/privateEndpointIpConfig.a350cd47-a4a7-47a3-982f-8939c6f061ec"
+                                    },
+                                    {
+                                        "id": "/subscriptions/00c77a26-88d2-4b10-b2b6-59f0e4e25a22/resourceGroups/tnt-app-ams-dev-rg/providers/Microsoft.Network/networkInterfaces/tnt-supply-chain-web-api-ams-dev-as-pep.nic.173c6a80-7c16-444a-8044-982182982820/ipConfigurations/privateEndpointIpConfig.f8bb8eab-c0cb-4e56-9322-33fb40caa3ef"
+                                    },
+                                    {
+                                        "id": "/subscriptions/00c77a26-88d2-4b10-b2b6-59f0e4e25a22/resourceGroups/tnt-app-ams-dev-rg/providers/Microsoft.Network/networkInterfaces/tnt-transaction-web-api-ams-dev-as-pep.nic.d063464b-4907-4480-bad5-c4fff4a9fe8a/ipConfigurations/privateEndpointIpConfig.e563b534-1cb4-4149-a41d-0a5c90083c4a"
+                                    },
+                                    {
+                                        "id": "/subscriptions/00c77a26-88d2-4b10-b2b6-59f0e4e25a22/resourceGroups/tnt-app-ams-dev-rg/providers/Microsoft.Network/networkInterfaces/tnt-transaction-inbound-outbound-web-api-am.nic.4e58cf4a-4b34-4d7a-9c75-d668a827c371/ipConfigurations/privateEndpointIpConfig.b5191dcb-9572-4ef2-9917-3f247a570f12"
+                                    }
+                                ],
+                                "privateEndpoints": [
+                                    {
+                                        "id": "/subscriptions/00c77a26-88d2-4b10-b2b6-59f0e4e25a22/resourceGroups/tnt-app-ams-dev-rg/providers/Microsoft.Network/privateEndpoints/tnt-identity-ams-dev-as-pep"
+                                    },
+                                    {
+                                        "id": "/subscriptions/00c77a26-88d2-4b10-b2b6-59f0e4e25a22/resourceGroups/tnt-app-ams-dev-rg/providers/Microsoft.Network/privateEndpoints/tnt-supply-chain-web-app-ams-dev-as-pep"
+                                    },
+                                    {
+                                        "id": "/subscriptions/00c77a26-88d2-4b10-b2b6-59f0e4e25a22/resourceGroups/tnt-app-ams-dev-rg/providers/Microsoft.Network/privateEndpoints/tnt-transaction-web-app-ams-dev-as-pep"
+                                    },
+                                    {
+                                        "id": "/subscriptions/00c77a26-88d2-4b10-b2b6-59f0e4e25a22/resourceGroups/tnt-app-ams-dev-rg/providers/Microsoft.Network/privateEndpoints/tnt-email-web-api-ams-dev-as-pep"
+                                    },
+                                    {
+                                        "id": "/subscriptions/00c77a26-88d2-4b10-b2b6-59f0e4e25a22/resourceGroups/tnt-app-ams-dev-rg/providers/Microsoft.Network/privateEndpoints/tnt-document-web-api-ams-dev-as-pep"
+                                    },
+                                    {
+                                        "id": "/subscriptions/00c77a26-88d2-4b10-b2b6-59f0e4e25a22/resourceGroups/tnt-app-ams-dev-rg/providers/Microsoft.Network/privateEndpoints/tnt-supply-chain-web-api-ams-dev-as-pep"
+                                    },
+                                    {
+                                        "id": "/subscriptions/00c77a26-88d2-4b10-b2b6-59f0e4e25a22/resourceGroups/tnt-app-ams-dev-rg/providers/Microsoft.Network/privateEndpoints/tnt-transaction-web-api-ams-dev-as-pep"
+                                    },
+                                    {
+                                        "id": "/subscriptions/00c77a26-88d2-4b10-b2b6-59f0e4e25a22/resourceGroups/tnt-app-ams-dev-rg/providers/Microsoft.Network/privateEndpoints/tnt-transaction-inbound-outbound-web-api-ams-dev-as-pep"
+                                    }
+                                ],
+                                "purpose": "PrivateEndpoints",
+                                "privateEndpointNetworkPolicies": "Disabled",
+                                "privateLinkServiceNetworkPolicies": "Disabled"
+                            }
+                        }
+                    ]
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2020-07-01",
+            "name": "[variables('outboundSubnetDeployment')]",
+            "resourceGroup": "tnt-net-ams-dev-rg",
+            "subscriptionId": "00c77a26-88d2-4b10-b2b6-59f0e4e25a22",
+            "properties": {
+                "mode": "Incremental",
+                "template": {
+                    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+                    "contentVersion": "1.0.0.0",
+                    "parameters": {},
+                    "variables": {},
+                    "resources": [
+                        {
+                            "type": "Microsoft.Network/virtualNetworks/subnets",
+                            "apiVersion": "2020-07-01",
+                            "name": "tnt-ams-dev-vn01/tnt-asp-win-ams-dev-sn01",
+                            "properties": {
+                                "delegations": [
+                                    {
+                                        "name": "Microsoft.Web.serverFarms",
+                                        "id": "/subscriptions/00c77a26-88d2-4b10-b2b6-59f0e4e25a22/resourceGroups/tnt-net-ams-dev-rg/providers/Microsoft.Network/virtualNetworks/tnt-ams-dev-vn01/subnets/tnt-asp-win-ams-dev-sn01/delegations/Microsoft.Web.serverFarms",
+                                        "etag": "W/\"715fb10d-96fa-4a49-a816-50180894a6c1\"",
+                                        "properties": {
+                                            "provisioningState": "Succeeded",
+                                            "serviceName": "Microsoft.Web/serverFarms",
+                                            "actions": [
+                                                "Microsoft.Network/virtualNetworks/subnets/action"
+                                            ]
+                                        },
+                                        "type": "Microsoft.Network/virtualNetworks/subnets/delegations"
+                                    }
+                                ],
+                                "serviceEndpoints": [],
+                                "provisioningState": "Succeeded",
+                                "addressPrefix": "172.20.104.192/26",
+                                "networkSecurityGroup": {
+                                    "id": "/subscriptions/00c77a26-88d2-4b10-b2b6-59f0e4e25a22/resourceGroups/tnt-net-ams-dev-rg/providers/Microsoft.Network/networkSecurityGroups/tnt-ams-dev-asp-nsg01"
+                                },
+                                "routeTable": {
+                                    "id": "/subscriptions/00c77a26-88d2-4b10-b2b6-59f0e4e25a22/resourceGroups/tnt-net-ams-dev-rg/providers/Microsoft.Network/routeTables/tnt-ams-dev-udr01"
+                                },
+                                "privateEndpointNetworkPolicies": "Disabled",
+                                "privateLinkServiceNetworkPolicies": "Disabled"
+                            }
+                        }
+                    ]
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2020-07-01",
+            "name": "[variables('storageSubnetDeployment')]",
+            "resourceGroup": "tnt-net-ams-dev-rg",
+            "subscriptionId": "00c77a26-88d2-4b10-b2b6-59f0e4e25a22",
+            "properties": {
+                "mode": "Incremental",
+                "template": {
+                    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+                    "contentVersion": "1.0.0.0",
+                    "parameters": {},
+                    "variables": {},
+                    "resources": [
+                        {
+                            "type": "Microsoft.Network/virtualNetworks/subnets",
+                            "apiVersion": "2020-07-01",
+                            "name": "tnt-ams-dev-vn01/tnt-web-ams-dev-sn01",
+                            "properties": {
+                                "delegations": [],
+                                "serviceEndpoints": [],
+                                "provisioningState": "Succeeded",
+                                "addressPrefix": "172.20.104.64/26",
+                                "networkSecurityGroup": {
+                                    "id": "/subscriptions/00c77a26-88d2-4b10-b2b6-59f0e4e25a22/resourceGroups/tnt-net-ams-dev-rg/providers/Microsoft.Network/networkSecurityGroups/tnt-ams-dev-web-nsg01"
+                                },
+                                "routeTable": {
+                                    "id": "/subscriptions/00c77a26-88d2-4b10-b2b6-59f0e4e25a22/resourceGroups/tnt-net-ams-dev-rg/providers/Microsoft.Network/routeTables/tnt-ams-dev-udr01"
+                                },
+                                "ipConfigurations": [
+                                    {
+                                        "id": "/subscriptions/00c77a26-88d2-4b10-b2b6-59f0e4e25a22/resourceGroups/tnt-app-ams-dev-rg/providers/Microsoft.Network/networkInterfaces/tnt-identity-ams-dev-as-pep.nic.22d780f3-de72-4c92-a13c-cc7f11d9815c/ipConfigurations/privateEndpointIpConfig.b27da0d4-c258-4fe8-b670-9e47c18a8010"
+                                    },
+                                    {
+                                        "id": "/subscriptions/00c77a26-88d2-4b10-b2b6-59f0e4e25a22/resourceGroups/tnt-app-ams-dev-rg/providers/Microsoft.Network/networkInterfaces/tnt-supply-chain-web-app-ams-dev-as-pep.nic.3c43d794-15e4-4552-afec-93fb6a60f4ba/ipConfigurations/privateEndpointIpConfig.2373c738-a2c3-4e76-8c9c-5bc3df84fd13"
+                                    },
+                                    {
+                                        "id": "/subscriptions/00c77a26-88d2-4b10-b2b6-59f0e4e25a22/resourceGroups/tnt-app-ams-dev-rg/providers/Microsoft.Network/networkInterfaces/tnt-transaction-web-app-ams-dev-as-pep.nic.5b74c93e-5ecc-4202-993d-fe4792e4e2ff/ipConfigurations/privateEndpointIpConfig.16462570-8e62-45c8-80f2-a6830d90e5ca"
+                                    },
+                                    {
+                                        "id": "/subscriptions/00c77a26-88d2-4b10-b2b6-59f0e4e25a22/resourceGroups/tnt-app-ams-dev-rg/providers/Microsoft.Network/networkInterfaces/tnt-email-web-api-ams-dev-as-pep.nic.73db5cac-db19-4dbb-aff3-f22fd954292c/ipConfigurations/privateEndpointIpConfig.c6f7a941-a280-4824-af59-772da9e72617"
+                                    },
+                                    {
+                                        "id": "/subscriptions/00c77a26-88d2-4b10-b2b6-59f0e4e25a22/resourceGroups/tnt-app-ams-dev-rg/providers/Microsoft.Network/networkInterfaces/tnt-document-web-api-ams-dev-as-pep.nic.44fe682f-f002-4d7b-a3b1-4794a19fa56a/ipConfigurations/privateEndpointIpConfig.a350cd47-a4a7-47a3-982f-8939c6f061ec"
+                                    },
+                                    {
+                                        "id": "/subscriptions/00c77a26-88d2-4b10-b2b6-59f0e4e25a22/resourceGroups/tnt-app-ams-dev-rg/providers/Microsoft.Network/networkInterfaces/tnt-supply-chain-web-api-ams-dev-as-pep.nic.173c6a80-7c16-444a-8044-982182982820/ipConfigurations/privateEndpointIpConfig.f8bb8eab-c0cb-4e56-9322-33fb40caa3ef"
+                                    },
+                                    {
+                                        "id": "/subscriptions/00c77a26-88d2-4b10-b2b6-59f0e4e25a22/resourceGroups/tnt-app-ams-dev-rg/providers/Microsoft.Network/networkInterfaces/tnt-transaction-web-api-ams-dev-as-pep.nic.d063464b-4907-4480-bad5-c4fff4a9fe8a/ipConfigurations/privateEndpointIpConfig.e563b534-1cb4-4149-a41d-0a5c90083c4a"
+                                    },
+                                    {
+                                        "id": "/subscriptions/00c77a26-88d2-4b10-b2b6-59f0e4e25a22/resourceGroups/tnt-app-ams-dev-rg/providers/Microsoft.Network/networkInterfaces/tnt-transaction-inbound-outbound-web-api-am.nic.4e58cf4a-4b34-4d7a-9c75-d668a827c371/ipConfigurations/privateEndpointIpConfig.b5191dcb-9572-4ef2-9917-3f247a570f12"
+                                    }
+                                ],
+                                "privateEndpoints": [
+                                    {
+                                        "id": "/subscriptions/00c77a26-88d2-4b10-b2b6-59f0e4e25a22/resourceGroups/tnt-app-ams-dev-rg/providers/Microsoft.Network/privateEndpoints/tnt-identity-ams-dev-as-pep"
+                                    },
+                                    {
+                                        "id": "/subscriptions/00c77a26-88d2-4b10-b2b6-59f0e4e25a22/resourceGroups/tnt-app-ams-dev-rg/providers/Microsoft.Network/privateEndpoints/tnt-supply-chain-web-app-ams-dev-as-pep"
+                                    },
+                                    {
+                                        "id": "/subscriptions/00c77a26-88d2-4b10-b2b6-59f0e4e25a22/resourceGroups/tnt-app-ams-dev-rg/providers/Microsoft.Network/privateEndpoints/tnt-transaction-web-app-ams-dev-as-pep"
+                                    },
+                                    {
+                                        "id": "/subscriptions/00c77a26-88d2-4b10-b2b6-59f0e4e25a22/resourceGroups/tnt-app-ams-dev-rg/providers/Microsoft.Network/privateEndpoints/tnt-email-web-api-ams-dev-as-pep"
+                                    },
+                                    {
+                                        "id": "/subscriptions/00c77a26-88d2-4b10-b2b6-59f0e4e25a22/resourceGroups/tnt-app-ams-dev-rg/providers/Microsoft.Network/privateEndpoints/tnt-document-web-api-ams-dev-as-pep"
+                                    },
+                                    {
+                                        "id": "/subscriptions/00c77a26-88d2-4b10-b2b6-59f0e4e25a22/resourceGroups/tnt-app-ams-dev-rg/providers/Microsoft.Network/privateEndpoints/tnt-supply-chain-web-api-ams-dev-as-pep"
+                                    },
+                                    {
+                                        "id": "/subscriptions/00c77a26-88d2-4b10-b2b6-59f0e4e25a22/resourceGroups/tnt-app-ams-dev-rg/providers/Microsoft.Network/privateEndpoints/tnt-transaction-web-api-ams-dev-as-pep"
+                                    },
+                                    {
+                                        "id": "/subscriptions/00c77a26-88d2-4b10-b2b6-59f0e4e25a22/resourceGroups/tnt-app-ams-dev-rg/providers/Microsoft.Network/privateEndpoints/tnt-transaction-inbound-outbound-web-api-ams-dev-as-pep"
+                                    }
+                                ],
+                                "purpose": "PrivateEndpoints",
+                                "privateEndpointNetworkPolicies": "Disabled",
+                                "privateLinkServiceNetworkPolicies": "Disabled"
+                            }
+                        }
+                    ]
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "apiVersion": "2021-02-01",
+            "name": "tntdevlogicapp-pep",
+            "location": "[parameters('location')]",
+            "type": "Microsoft.Network/privateEndpoints",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/Sites', parameters('name'))]"
+            ],
+            "properties": {
+                "subnet": {
+                    "id": "/subscriptions/00c77a26-88d2-4b10-b2b6-59f0e4e25a22/resourceGroups/tnt-net-ams-dev-rg/providers/Microsoft.Network/virtualNetworks/tnt-ams-dev-vn01/subnets/tnt-web-ams-dev-sn01"
+                },
+                "privateLinkServiceConnections": [
+                    {
+                        "name": "tntdevlogicapp-pep",
+                        "properties": {
+                            "privateLinkServiceId": "[resourceId('Microsoft.Web/Sites', parameters('name'))]",
+                            "groupIds": [
+                                "sites"
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "type": "Microsoft.Network/privateDnsZones",
+            "apiVersion": "2018-09-01",
+            "name": "[variables('inboundPrivateDnsZoneName')]",
+            "location": "global",
+            "dependsOn": [
+                "tntdevlogicapp-pep"
+            ]
+        },
+        {
+            "type": "Microsoft.Network/privateEndpoints/privateDnsZoneGroups",
+            "apiVersion": "2020-03-01",
+            "name": "[concat('tntdevlogicapp-pep', '/', 'default')]",
+            "location": "[parameters('location')]",
+            "dependsOn": [
+                "tntdevlogicapp-pep",
+                "[resourceId('Microsoft.Network/privateDnsZones', variables('inboundPrivateDNSZoneName'))]"
+            ],
+            "properties": {
+                "privateDnsZoneConfigs": [
+                    {
+                        "name": "[format('{0}-config', variables('inboundPrivateDnsZoneName'))]",
+                        "properties": {
+                            "privateDnsZoneId": "[resourceId('Microsoft.Network/privateDnsZones', variables('inboundPrivateDnsZoneName'))]"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "type": "Microsoft.Network/privateDnsZones/virtualNetworkLinks",
+            "apiVersion": "2018-09-01",
+            "name": "[format('{0}/{1}', variables('inboundPrivateDnsZoneName'), format('{0}-link', parameters('name')))]",
+            "location": "global",
+            "dependsOn": [
+                "tntdevlogicapp-pep",
+                "[resourceId('Microsoft.Network/privateDnsZones', variables('inboundPrivateDNSZoneName'))]"
+            ],
+            "properties": {
+                "virtualNetwork": {
+                    "id": "[resourceId('tnt-net-ams-dev-rg', 'Microsoft.Network/virtualNetworks', 'tnt-ams-dev-vn01')]"
+                },
+                "registrationEnabled": false
+            }
+        },
+        {
+            "apiVersion": "2021-02-01",
+            "name": "[concat('tntdevlogicappsa-pep', '-', variables('privateEndpointStorageFileName'))]",
+            "type": "Microsoft.Network/privateEndpoints",
+            "location": "[parameters('location')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/Sites', parameters('name'))]",
+                "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName'))]"
+            ],
+            "properties": {
+                "subnet": {
+                    "id": "/subscriptions/00c77a26-88d2-4b10-b2b6-59f0e4e25a22/resourceGroups/tnt-net-ams-dev-rg/providers/Microsoft.Network/virtualNetworks/tnt-ams-dev-vn01/subnets/tnt-web-ams-dev-sn01"
+                },
+                "privateLinkServiceConnections": [
+                    {
+                        "name": "filePrivateLinkConnection",
+                        "properties": {
+                            "privateLinkServiceId": "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName'))]",
+                            "groupIds": [
+                                "file"
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "apiVersion": "2021-02-01",
+            "name": "[concat('tntdevlogicappsa-pep', '-', variables('privateEndpointStorageTableName'))]",
+            "type": "Microsoft.Network/privateEndpoints",
+            "location": "[parameters('location')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/Sites', parameters('name'))]",
+                "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName'))]"
+            ],
+            "properties": {
+                "subnet": {
+                    "id": "/subscriptions/00c77a26-88d2-4b10-b2b6-59f0e4e25a22/resourceGroups/tnt-net-ams-dev-rg/providers/Microsoft.Network/virtualNetworks/tnt-ams-dev-vn01/subnets/tnt-web-ams-dev-sn01"
+                },
+                "privateLinkServiceConnections": [
+                    {
+                        "name": "tablePrivateLinkConnection",
+                        "properties": {
+                            "privateLinkServiceId": "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName'))]",
+                            "groupIds": [
+                                "table"
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "apiVersion": "2021-02-01",
+            "name": "[concat('tntdevlogicappsa-pep', '-', variables('privateEndpointStorageBlobName'))]",
+            "type": "Microsoft.Network/privateEndpoints",
+            "location": "[parameters('location')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/Sites', parameters('name'))]",
+                "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName'))]"
+            ],
+            "properties": {
+                "subnet": {
+                    "id": "/subscriptions/00c77a26-88d2-4b10-b2b6-59f0e4e25a22/resourceGroups/tnt-net-ams-dev-rg/providers/Microsoft.Network/virtualNetworks/tnt-ams-dev-vn01/subnets/tnt-web-ams-dev-sn01"
+                },
+                "privateLinkServiceConnections": [
+                    {
+                        "name": "blobPrivateLinkConnection",
+                        "properties": {
+                            "privateLinkServiceId": "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName'))]",
+                            "groupIds": [
+                                "blob"
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "apiVersion": "2021-02-01",
+            "name": "[concat('tntdevlogicappsa-pep', '-', variables('privateEndpointStorageQueueName'))]",
+            "type": "Microsoft.Network/privateEndpoints",
+            "location": "[parameters('location')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/Sites', parameters('name'))]",
+                "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName'))]"
+            ],
+            "properties": {
+                "subnet": {
+                    "id": "/subscriptions/00c77a26-88d2-4b10-b2b6-59f0e4e25a22/resourceGroups/tnt-net-ams-dev-rg/providers/Microsoft.Network/virtualNetworks/tnt-ams-dev-vn01/subnets/tnt-web-ams-dev-sn01"
+                },
+                "privateLinkServiceConnections": [
+                    {
+                        "name": "queuePrivateLinkConnection",
+                        "properties": {
+                            "privateLinkServiceId": "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName'))]",
+                            "groupIds": [
+                                "queue"
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "type": "Microsoft.Network/privateDnsZones",
+            "apiVersion": "2018-09-01",
+            "name": "[variables('privateStorageFileDnsZoneName')]",
+            "location": "global",
+            "dependsOn": [
+                "[concat('tntdevlogicappsa-pep', '-', variables('privateEndpointStorageFileName'))]"
+            ]
+        },
+        {
+            "type": "Microsoft.Network/privateEndpoints/privateDnsZoneGroups",
+            "apiVersion": "2020-03-01",
+            "name": "[concat('tntdevlogicappsa-pep', '-', variables('privateEndpointStorageFileName'), '/', variables('privateEndpointStorageFileName'))]",
+            "location": "[parameters('location')]",
+            "dependsOn": [
+                "[concat('tntdevlogicappsa-pep', '-', variables('privateEndpointStorageFileName'))]",
+                "[resourceId('Microsoft.Network/privateDnsZones', variables('privateStorageFileDnsZoneName'))]"
+            ],
+            "properties": {
+                "privateDnsZoneConfigs": [
+                    {
+                        "name": "config",
+                        "properties": {
+                            "privateDnsZoneId": "[resourceId('Microsoft.Network/privateDnsZones', variables('privateStorageFileDnsZoneName'))]"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "type": "Microsoft.Network/privateDnsZones/virtualNetworkLinks",
+            "apiVersion": "2018-09-01",
+            "name": "[format('{0}/{1}', variables('privateStorageFileDnsZoneName'), format('{0}-link', variables('privateStorageFileDnsZoneName')))]",
+            "location": "global",
+            "dependsOn": [
+                "[concat('tntdevlogicappsa-pep', '-', variables('privateEndpointStorageFileName'))]",
+                "[resourceId('Microsoft.Network/privateDnsZones', variables('privateStorageFileDnsZoneName'))]"
+            ],
+            "properties": {
+                "virtualNetwork": {
+                    "id": "[resourceId('tnt-net-ams-dev-rg', 'Microsoft.Network/virtualNetworks', 'tnt-ams-dev-vn01')]"
+                },
+                "registrationEnabled": false
+            }
+        },
+        {
+            "type": "Microsoft.Network/privateDnsZones",
+            "apiVersion": "2018-09-01",
+            "name": "[variables('privateStorageTableDnsZoneName')]",
+            "location": "global",
+            "dependsOn": [
+                "[concat('tntdevlogicappsa-pep', '-', variables('privateEndpointStorageTableName'))]"
+            ]
+        },
+        {
+            "type": "Microsoft.Network/privateEndpoints/privateDnsZoneGroups",
+            "apiVersion": "2020-03-01",
+            "name": "[concat('tntdevlogicappsa-pep', '-', variables('privateEndpointStorageTableName'), '/', variables('privateEndpointStorageTableName'))]",
+            "location": "[parameters('location')]",
+            "dependsOn": [
+                "[concat('tntdevlogicappsa-pep', '-', variables('privateEndpointStorageTableName'))]",
+                "[resourceId('Microsoft.Network/privateDnsZones', variables('privateStorageTableDnsZoneName'))]"
+            ],
+            "properties": {
+                "privateDnsZoneConfigs": [
+                    {
+                        "name": "config",
+                        "properties": {
+                            "privateDnsZoneId": "[resourceId('Microsoft.Network/privateDnsZones', variables('privateStorageTableDnsZoneName'))]"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "type": "Microsoft.Network/privateDnsZones/virtualNetworkLinks",
+            "apiVersion": "2018-09-01",
+            "name": "[format('{0}/{1}', variables('privateStorageTableDnsZoneName'), format('{0}-link', variables('privateStorageTableDnsZoneName')))]",
+            "location": "global",
+            "dependsOn": [
+                "[concat('tntdevlogicappsa-pep', '-', variables('privateEndpointStorageTableName'))]",
+                "[resourceId('Microsoft.Network/privateDnsZones', variables('privateStorageTableDnsZoneName'))]"
+            ],
+            "properties": {
+                "virtualNetwork": {
+                    "id": "[resourceId('tnt-net-ams-dev-rg', 'Microsoft.Network/virtualNetworks', 'tnt-ams-dev-vn01')]"
+                },
+                "registrationEnabled": false
+            }
+        },
+        {
+            "type": "Microsoft.Network/privateDnsZones",
+            "apiVersion": "2018-09-01",
+            "name": "[variables('privateStorageBlobDnsZoneName')]",
+            "location": "global",
+            "dependsOn": [
+                "[concat('tntdevlogicappsa-pep', '-', variables('privateEndpointStorageBlobName'))]"
+            ]
+        },
+        {
+            "type": "Microsoft.Network/privateEndpoints/privateDnsZoneGroups",
+            "apiVersion": "2020-03-01",
+            "name": "[concat('tntdevlogicappsa-pep', '-', variables('privateEndpointStorageBlobName'), '/', variables('privateEndpointStorageBlobName'))]",
+            "location": "[parameters('location')]",
+            "dependsOn": [
+                "[concat('tntdevlogicappsa-pep', '-', variables('privateEndpointStorageBlobName'))]",
+                "[resourceId('Microsoft.Network/privateDnsZones', variables('privateStorageBlobDnsZoneName'))]"
+            ],
+            "properties": {
+                "privateDnsZoneConfigs": [
+                    {
+                        "name": "config",
+                        "properties": {
+                            "privateDnsZoneId": "[resourceId('Microsoft.Network/privateDnsZones', variables('privateStorageBlobDnsZoneName'))]"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "type": "Microsoft.Network/privateDnsZones/virtualNetworkLinks",
+            "apiVersion": "2018-09-01",
+            "name": "[format('{0}/{1}', variables('privateStorageBlobDnsZoneName'), format('{0}-link', variables('privateStorageBlobDnsZoneName')))]",
+            "location": "global",
+            "dependsOn": [
+                "[concat('tntdevlogicappsa-pep', '-', variables('privateEndpointStorageBlobName'))]",
+                "[resourceId('Microsoft.Network/privateDnsZones', variables('privateStorageBlobDnsZoneName'))]"
+            ],
+            "properties": {
+                "virtualNetwork": {
+                    "id": "[resourceId('tnt-net-ams-dev-rg', 'Microsoft.Network/virtualNetworks', 'tnt-ams-dev-vn01')]"
+                },
+                "registrationEnabled": false
+            }
+        },
+        {
+            "type": "Microsoft.Network/privateDnsZones",
+            "apiVersion": "2018-09-01",
+            "name": "[variables('privateStorageQueueDnsZoneName')]",
+            "location": "global",
+            "dependsOn": [
+                "[concat('tntdevlogicappsa-pep', '-', variables('privateEndpointStorageQueueName'))]"
+            ]
+        },
+        {
+            "type": "Microsoft.Network/privateEndpoints/privateDnsZoneGroups",
+            "apiVersion": "2020-03-01",
+            "name": "[concat('tntdevlogicappsa-pep', '-', variables('privateEndpointStorageQueueName'), '/', variables('privateEndpointStorageQueueName'))]",
+            "location": "[parameters('location')]",
+            "dependsOn": [
+                "[concat('tntdevlogicappsa-pep', '-', variables('privateEndpointStorageQueueName'))]",
+                "[resourceId('Microsoft.Network/privateDnsZones', variables('privateStorageQueueDnsZoneName'))]"
+            ],
+            "properties": {
+                "privateDnsZoneConfigs": [
+                    {
+                        "name": "config",
+                        "properties": {
+                            "privateDnsZoneId": "[resourceId('Microsoft.Network/privateDnsZones', variables('privateStorageQueueDnsZoneName'))]"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "type": "Microsoft.Network/privateDnsZones/virtualNetworkLinks",
+            "apiVersion": "2018-09-01",
+            "name": "[format('{0}/{1}', variables('privateStorageQueueDnsZoneName'), format('{0}-link', variables('privateStorageQueueDnsZoneName')))]",
+            "location": "global",
+            "dependsOn": [
+                "[concat('tntdevlogicappsa-pep', '-', variables('privateEndpointStorageQueueName'))]",
+                "[resourceId('Microsoft.Network/privateDnsZones', variables('privateStorageQueueDnsZoneName'))]"
+            ],
+            "properties": {
+                "virtualNetwork": {
+                    "id": "[resourceId('tnt-net-ams-dev-rg', 'Microsoft.Network/virtualNetworks', 'tnt-ams-dev-vn01')]"
+                },
+                "registrationEnabled": false
+            }
+        },
+        {
+            "apiVersion": "2020-02-02-preview",
+            "name": "tntdevlogicapp",
+            "type": "microsoft.insights/components",
+            "location": "westeurope",
+            "tags": {},
+            "dependsOn": [
+                "newWorkspaceTemplate"
+            ],
+            "properties": {
+                "ApplicationId": "[parameters('name')]",
+                "Request_Source": "IbizaWebAppExtensionCreate",
+                "Flow_Type": "Redfield",
+                "Application_Type": "web",
+                "WorkspaceResourceId": "/subscriptions/00c77a26-88d2-4b10-b2b6-59f0e4e25a22/resourceGroups/DefaultResourceGroup-WEU/providers/Microsoft.OperationalInsights/workspaces/DefaultWorkspace-00c77a26-88d2-4b10-b2b6-59f0e4e25a22-WEU"
+            }
+        },
+        {
+            "apiVersion": "2021-04-01",
+            "type": "Microsoft.Storage/storageAccounts",
+            "name": "[parameters('storageAccountName')]",
+            "location": "[parameters('location')]",
+            "tags": {},
+            "kind": "StorageV2",
+            "sku": {
+                "name": "Standard_ZRS"
+            },
+            "properties": {
+                "supportsHttpsTrafficOnly": true,
+                "minimumTlsVersion": "TLS1_2"
+            }
+        },
+        {
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2019-10-01",
+            "name": "newWorkspaceTemplate",
+            "resourceGroup": "DefaultResourceGroup-WEU",
+            "subscriptionId": "[parameters('subscriptionId')]",
+            "properties": {
+                "mode": "Incremental",
+                "template": {
+                    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+                    "contentVersion": "1.0.0.0",
+                    "parameters": {},
+                    "variables": {},
+                    "resources": [
+                        {
+                            "apiVersion": "2020-08-01",
+                            "name": "DefaultWorkspace-00c77a26-88d2-4b10-b2b6-59f0e4e25a22-WEU",
+                            "type": "Microsoft.OperationalInsights/workspaces",
+                            "location": "West Europe",
+                            "properties": {}
+                        }
+                    ]
+                }
+            }
+        }
+    ]
+}

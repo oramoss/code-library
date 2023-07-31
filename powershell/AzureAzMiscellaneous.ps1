@@ -24,3 +24,6 @@ Select-AzureRmSubscription -SubscriptionId xxxxx-xxxxx-xxxxxx-xxxx
 # Enable accelerated networking
 az account set -s "<subscription>"
 az network nic update -g "<resource group of the NIC>" -n "<NIC>" --accelerated-networking true
+
+# Get Sku/AZ availability
+az vm list-skus --location francecentral --size Standard_D4ads_v5 --all --output table

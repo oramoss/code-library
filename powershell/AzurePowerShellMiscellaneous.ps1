@@ -1,4 +1,8 @@
-﻿# List stuff
+﻿# Upgrade Powershell
+# Run in Powershell terminal
+iex "& { $(irm https://aka.ms/install-powershell.ps1) } -UseMSI"
+
+# List stuff
 Get-AzureVMImage| Select * | Out-Gridview –Passthru
 Get-AzureVMImage | Where-Object {$_.ImageName -eq "d570a118449e48fdbe814fb54b36b60e__hwx_sandbox_hdp_2_5v6"}
 
@@ -31,4 +35,4 @@ Get-AzRoleAssignment -SignInName "UPN"
 
 # Get Policy Aliases with ensuring the ellipsis is enumerated...
 $FormatEnumerationLimit=-1 
-PS /home/jeff> Get-AzPolicyAlias -Namespacematch 'compute'|select aliases | ft -auto -wrap
+Get-AzPolicyAlias -Namespacematch 'compute'|select aliases | ft -auto -wrap

@@ -1,0 +1,58 @@
+{
+  "status": "Failed",
+  "error": {
+    "code": "DeploymentFailed",
+    "target": "/subscriptions/c983dc6f-11e0-4b4b-99e2-953600895e90/providers/Microsoft.Resources/deployments/StudioIntegration-1",
+    "message": "At least one resource deployment operation failed. Please list deployment operations for details. Please see https://aka.ms/arm-deployment-operations for usage details.",
+    "details": [
+      {
+        "code": "ResourceDeploymentFailure",
+        "target": "/subscriptions/41158e63-2405-4576-acf5-b1ada00a81ea/resourceGroups/FG-vnethub-uksouth/providers/Microsoft.Resources/deployments/FG-hub-uksouth-fg-uks-StudioIntegration-dev-vn01-vnp",
+        "message": "The resource write operation failed to complete successfully, because it reached terminal provisioning state 'Failed'.",
+        "details": [
+          {
+            "code": "DeploymentFailed",
+            "target": "/subscriptions/41158e63-2405-4576-acf5-b1ada00a81ea/resourceGroups/FG-vnethub-uksouth/providers/Microsoft.Resources/deployments/FG-hub-uksouth-fg-uks-StudioIntegration-dev-vn01-vnp",
+            "message": "At least one resource deployment operation failed. Please list deployment operations for details. Please see https://aka.ms/arm-deployment-operations for usage details.",
+            "details": [
+              {
+                "code": "ChangingRemoteVirtualNetworkNotAllowed",
+                "message": "
+Changing RemoteVirtualNetwork property from Id: 
+/subscriptions/d8f0cb70-0d09-4e85-9881-7e5a4b2a4da6/resourceGroups/fg-uks-StudioIntegration-dev-rgnet/providers/Microsoft.Network/virtualNetworks/fg-uks-StudioIntegration-dev-vn01\r\n
+AddressSpace: \r\n
+ResourceGuid: 543540c5-541b-4aff-9c25-36bae3afa87a\r\n
+rovisioningState: Succeeded\r\n
+CreatedTime: 0001-01-01T00:00:00.0000000\r\n
+LastModifiedTime: 0001-01-01T00:00:00.0000000\r\n
+Prefix, 
+Subnet.Name\r\nNone\r\n
+Subnet details:\r\n
+Prefix, Ipconfig.IsReferenceStub, Ipconfig.PrivateIPAddress, Ipconfig.Id\r\nNone\r\nCloudServices:\r\n
+GreKey: 0\r\n
+GreKeyAllocationId: 00000000-0000-0000-0000-000000000000\r\n
+GreKeyAllocationServiceUri: \r\n
+IDnsAclZoneId: \r\n
+RegionId: 0\r\n
+VnetFlowLogConfiguration: null\r\n
+ExtendedLocation:  to Id: /subscriptions/c983dc6f-11e0-4b4b-99e2-953600895e90/resourceGroups/fg-uks-StudioIntegration-dev-rgnet/providers/Microsoft.Network/virtualNetworks/fg-uks-StudioIntegration-dev-vn01\r\n
+AddressSpace: \r\n
+ResourceGuid: 4d3c6059-5772-4bd0-a551-254af3f60897\r\n
+ProvisioningState: Succeeded\r\n
+CreatedTime: 0001-01-01T00:00:00.0000000\r\n
+LastModifiedTime: 0001-01-01T00:00:00.0000000\r\n
+Prefix, Subnet.Name\r\nNone\r\nSubnet details:\r\n
+Prefix, Ipconfig.IsReferenceStub, Ipconfig.PrivateIPAddress, Ipconfig.Id\r\nNone\r\nCloudServices:\r\n
+GreKey: 0\r\nGreKeyAllocationId: 00000000-0000-0000-0000-000000000000\r\nGreKeyAllocationServiceUri: \r\n
+IDnsAclZoneId: \r\nRegionId: 0\r\nVnetFlowLogConfiguration: null\r\n
+ExtendedLocation:  of a peering is not allowed. Delete and re-create the peering with new RemoteVirtualNetwork value instead. 
+Peering id: /subscriptions/41158e63-2405-4576-acf5-b1ada00a81ea/resourceGroups/FG-vnethub-uksouth/providers/Microsoft.Network/virtualNetworks/FG-hub-uksouth/virtualNetworkPeerings/FG-hub-uksouth-fg-uks-StudioIntegration-dev-vn01-vnp.",
+                "details": []
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

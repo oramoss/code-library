@@ -69,3 +69,50 @@ Resources
 | where properties !has 'virtualmachine'
 | where properties !has 'privateLinkConnectionProperties'
 | project properties,id, resourceGroup, location, subscriptionId
+
+
+// Find WAF error logs - searching for host/uri
+// Usually to find the reason the WAF blocks the request...usually sql injection
+AzureDiagnostics 
+| where ResourceProvider == "MICROSOFT.NETWORK" and Category == "ApplicationGatewayFirewallLog"
+| where hostname_s == "tnt-identity-test.rev-log.com"
+| where requestUri_s contains "RegisterConfirmation"
+| order by TimeGenerated desc 
+
+// Summarize requests for Key vault artifcats within last 7d
+let data = AzureDiagnostics 
+    | where TimeGenerated > ago(7d)
+    // Ignore Authentication operations with a 401. This is normal when using Key Vault SDK, first an unauthenticated request is done then the response is used for authentication.
+    | where Category == "AuditEvent" and not (OperationName == "Authentication" and httpStatusCode_d == 401)
+    | where OperationName in ('CertificateIssuersList', 'CertificateList', 'ListPrivateEndpointConnections', 'SecretGet', 'VaultGet', 'VaultPatch') or '*' in ('CertificateIssuersList', 'CertificateList', 'ListPrivateEndpointConnections', 'SecretGet', 'VaultGet', 'VaultPatch')
+    | where requestUri_s  == "????"
+    // Create ResultStatus with all the 'success' results bucked as 'Success'
+    // Certain operations like StorageAccountAutoSyncKey have no ResultSignature, for now set to 'Success' as well
+    | extend ResultStatus = case (
+                                ResultSignature == "",
+                                "Success",
+                                ResultSignature == "OK",
+                                "Success",
+                                ResultSignature == "Accepted",
+                                "Success",
+                                ResultSignature
+                            )
+    | where ResultStatus == 'All' or 'All' == 'All';
+data
+| summarize count() by identity_claim_xms_mirid_s
+
+// Log breakdown by Solution/DataType
+Usage
+| where TimeGenerated > startofday(ago(90d))
+| where IsBillable == true
+| where Solution == "LogManagement"
+| where DataType == "AzureDiagnostics"
+| summarize IngestedGB = sum(Quantity) / 1000 by Type
+| sort by IngestedGB desc
+
+Usage
+| where TimeGenerated > startofday(ago(90d))
+| where IsBillable == true
+| where Solution == "LogManagement"
+| where DataType == "AzureDiagnostics"
+

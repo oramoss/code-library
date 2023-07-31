@@ -1,3 +1,19 @@
+
+CREATE USER [rlg-IaC-SUB-RLG-corp-GPTM-development-sp01] FROM EXTERNAL PROVIDER
+EXEC sp_addrolemember 'db_owner', 'rlg-IaC-SUB-RLG-corp-GPTM-development-sp01'
+
+-- List users
+select name as username,
+       create_date,
+       modify_date,
+       type_desc as type,
+       authentication_type_desc as authentication_type
+from sys.database_principals
+where type not in ('A', 'G', 'R', 'X')
+      and sid is not null
+      and name != 'guest'
+order by username;
+
 --Database owners are as expected
 --Remove people from Owner role where they should not be there...
 SELECT USER_NAME(member_principal_id) AS [Owner]
