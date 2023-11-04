@@ -79,6 +79,15 @@ AzureDiagnostics
 | where requestUri_s contains "RegisterConfirmation"
 | order by TimeGenerated desc 
 
+// Find AFD error logs - searching for host/uri
+AzureDiagnostics 
+| where ResourceProvider == "MICROSOFT.CDN" 
+| where Category == "FrontDoorAccessLog"
+| where hostName_s == "dev-om.rev-log.com"
+| where requestUri_s contains "p3/app"
+| order by TimeGenerated desc 
+
+
 // Summarize requests for Key vault artifcats within last 7d
 let data = AzureDiagnostics 
     | where TimeGenerated > ago(7d)
@@ -115,4 +124,25 @@ Usage
 | where IsBillable == true
 | where Solution == "LogManagement"
 | where DataType == "AzureDiagnostics"
+
+//Compare Log Analytics Agent to AMA to ensure it is working after switch to AMA
+Heartbeat
+| distinct Computer, SourceComputerId, Category
+| join kind=inner (
+    Event
+| extend d=parse_xml(EventData)
+    | extend sourceHealthServiceId = tostring(d.DataItem.["@sourceHealthServiceId"])
+    | project-reorder TimeGenerated, Computer, EventID, sourceHealthServiceId, ParameterXml, EventData
+    ) on $left.SourceComputerId==$right.sourceHealthServiceId
+| project TimeGenerated, Computer, Category, EventID, sourceHealthServiceId, ParameterXml, EventData
+
+// Find VMs that user a specific Image
+resources
+| where type == "microsoft.compute/virtualmachines"
+| where properties['virtualMachineProfile']['storageProfile']['imageReference']['id'] contains "2019StdImg"
+
+// Find VMSSs that user a specific Image
+resources
+| where type == "microsoft.compute/virtualmachinescalesets"
+| where properties['virtualMachineProfile']['storageProfile']['imageReference']['id'] contains "2019StdImg"
 

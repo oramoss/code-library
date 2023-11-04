@@ -22,3 +22,6 @@ az sql db list-editions -l uksouth -o table
 az devops configure --defaults organization=https://dev.azure.com/rev-log
 az devops security group membership list --id "[IaC]\Contributors"
 az devops security group membership add --group-id "[IaC]\Contributors" --member-id [TEAM FOUNDATION]\\RLG-DELG-LAAD-AZ-OrderManagement-Engineer
+
+# Upload ssh key to key vault secret
+az keyvault secret set –vault-name <name of key vault> –name <name of secret> –file <private ssh key > –encoding ascii

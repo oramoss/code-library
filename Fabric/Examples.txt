@@ -1,0 +1,5 @@
+# Spark SQL
+
+## Remove table...
+%%sql
+DROP TABLE DIM_AuditMaterialTypes;

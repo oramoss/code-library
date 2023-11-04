@@ -36,3 +36,14 @@ Get-AzRoleAssignment -SignInName "UPN"
 # Get Policy Aliases with ensuring the ellipsis is enumerated...
 $FormatEnumerationLimit=-1 
 Get-AzPolicyAlias -Namespacematch 'compute'|select aliases | ft -auto -wrap
+
+# Test Net connections
+Test-NetConnection -ComputerName "X" -InformationLevel "Detailed" -Port 1433 
+
+# Set Context
+Set-AzContext -Subscription "X"
+# Update VMSS Image
+Update-AzVmss `
+    -ResourceGroupName "X" `
+    -VMScaleSetName "Y" `
+    -ImageReferenceId "Z"
