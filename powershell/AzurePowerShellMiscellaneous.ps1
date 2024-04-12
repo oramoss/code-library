@@ -1,4 +1,15 @@
-﻿# Upgrade Powershell
+﻿# Loop round subscriptions - in this case to get whether a custom role is in use (replace the roledefinitionid)
+$Subs = Get-AzSubscription # All Subscriptions
+
+ForEach ($Sub in $Subs) {
+  Write-Host "Subscription Name: " $Sub.Name
+  Set-AzContext -SubscriptionId $Sub.SubscriptionId
+     
+  Get-AzRoleAssignment |Where-Object {($_.RoleDefinitionId -eq "cf650093-b421-4bbd-b81f-48a4ef2cfc06")}
+}
+
+
+# Upgrade Powershell
 # Run in Powershell terminal
 iex "& { $(irm https://aka.ms/install-powershell.ps1) } -UseMSI"
 

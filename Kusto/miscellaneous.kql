@@ -1,6 +1,49 @@
 https://docs.microsoft.com/en-us/azure/governance/resource-graph/samples/starter?tabs=azure-cli
 https://docs.microsoft.com/en-us/azure/governance/resource-graph/samples/advanced?tabs=azure-cli#join-sql
 
+// Find use of a Key in a KV
+AzureDiagnostics 
+| where OperationName == "KeyGet"
+| summarize count() by identity_claim_upn_s
+
+// Find VMSS with expiring images
+resources 
+|where type == "microsoft.compute/virtualmachinescalesets" 
+| where properties.virtualMachineProfile.storageProfile.imageReference.publisher =~ 'MicrosoftWindowsServer' //optional filter, uncomment this line to filter for a specific publisher.
+| where properties.virtualMachineProfile.storageProfile.imageReference.sku =~ '2022-datacenter-azure-edition' //optional filter, uncomment this line to filter for a specific deprecated SKU (Plan).
+//| where properties.storageProfile.imageReference.version == '20348.1487.230106' //optional filter, uncomment this line to filter for a specific deprecated version.
+|project name, subscriptionId, resourceGroup, ImagePublisher=properties.storageProfile.imageReference.publisher,ImageOffer=properties.storageProfile.imageReference.offer,imageSku=properties.storageProfile.imageReference.sku, imageVersion=properties.storageProfile.imageReference.exactVersion
+
+// Find VM with expiring images
+resources 
+|where type == "microsoft.compute/virtualmachines" 
+| where properties.virtualMachineProfile.storageProfile.imageReference.publisher =~ 'MicrosoftWindowsServer' //optional filter, uncomment this line to filter for a specific publisher.
+| where properties.virtualMachineProfile.storageProfile.imageReference.sku =~ '2022-datacenter-azure-edition' //optional filter, uncomment this line to filter for a specific deprecated SKU (Plan).
+//| where properties.storageProfile.imageReference.version == '20348.1487.230106' //optional filter, uncomment this line to filter for a specific deprecated version.
+|project name, subscriptionId, resourceGroup, ImagePublisher=properties.storageProfile.imageReference.publisher,ImageOffer=properties.storageProfile.imageReference.offer,imageSku=properties.storageProfile.imageReference.sku, imageVersion=properties.storageProfile.imageReference.exactVersion
+
+// Find storage file logs by protocol...
+StorageFileLogs
+| where Protocol == "NFS"
+| summarize count=count() by Protocol
+
+// Find storage accounts with most blob accesses...
+StorageBlobLogs
+| summarize Count = count() by _ResourceId
+| order by Count desc nulls first 
+
+// Show storage account accesses by authN type for access key usage
+StorageBlobLogs
+| where AuthenticationType == "AccountKey" or AuthenticationType == "SAS"
+| where TimeGenerated > ago(3d)
+| summarize Count=count() by AccountName,AuthenticationType
+| order by AccountName,AuthenticationType
+
+// Storage Blob logs for access key usage
+StorageBlobLogs
+| where AuthenticationType == "AccountKey" or AuthenticationType == "SAS"
+| where TimeGenerated > ago(3d)
+
 // Total billable executions 
 // Total billable executions by operation name. 
 // resource_workflowName_s,
@@ -146,3 +189,24 @@ resources
 | where type == "microsoft.compute/virtualmachinescalesets"
 | where properties['virtualMachineProfile']['storageProfile']['imageReference']['id'] contains "2019StdImg"
 
+// AFD cache hits
+AzureDiagnostics 
+| where OperationName == "Microsoft.Cdn/Profiles/AccessLog/Write" and Category == "FrontDoorAccessLog" 
+| where requestUri_s == "https://uat-sdrs-api.rev-log.com:443/rpo/v1.0/api-mobile/rps?since=2023-01-01"
+| where cacheStatus_s == "HIT"
+| summarize by cacheStatus_s
+
+// Find Alerts using an Action Group - replace the action group resource id
+resources
+| where type in~ ('microsoft.insights/metricalerts','microsoft.insights/scheduledqueryrules') and ['kind'] !in~ ('LogToMetric','LogToApplicationInsights')
+| extend severity = strcat("Sev", properties["severity"])
+| extend enabled = tobool(properties["enabled"])
+| where enabled in~ ('true')
+| extend actionGroups = properties.actions.actionGroups
+| project id,name,type,properties,enabled,severity,subscriptionId,actionGroups
+| union (resources | where type =~ 'microsoft.alertsmanagement/smartdetectoralertrules' | extend severity = tostring(properties["severity"])
+| extend enabled = properties["state"] =~ 'Enabled' | where enabled in~ ('true') | project id,name,type,properties,enabled,severity,subscriptionId), (resources | where type =~ 'microsoft.insights/activitylogalerts' | extend severity = "Sev4"
+| extend enabled = tobool(properties["enabled"]) | mvexpand innerCondition = properties["condition"]["allOf"] | where innerCondition["field"] =~ 'category'
+| where enabled in~ ('true') | project id,name,type,properties,enabled,severity,subscriptionId)
+| extend Result=set_has_element(actionGroups, "/subscriptions/76379826-f044-401f-a14c-ceaf710d52a7/resourceGroups/fg-uks-mgmt-alertgroups/providers/microsoft.insights/actiongroups/Budget-alert")
+| where Result == 1

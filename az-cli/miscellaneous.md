@@ -25,3 +25,12 @@ az devops security group membership add --group-id "[IaC]\Contributors" --member
 
 # Upload ssh key to key vault secret
 az keyvault secret set –vault-name <name of key vault> –name <name of secret> –file <private ssh key > –encoding ascii
+
+# https://www.danielstechblog.io/trigger-an-on-demand-azure-policy-compliance-evaluation-scan/
+# Trigger a policy scan for current sub
+az policy state trigger-scan
+# Trigger a policy scan for current sub and RG
+az policy state trigger-scan --resource-group resource-group-name
+
+# Decompile bicep - convert json to bicep file
+az bicep decompile --file main.json
