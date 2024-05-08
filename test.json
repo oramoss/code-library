@@ -1,1 +1,22 @@
-{\"id\":\"/subscriptions/4ed3915d-0976-4890-bb99-a44fb842e419/resourceGroups/fg-uks-shiftsavailability-dev-rgapp/providers/Microsoft.Web/sites/fg-uks-ShiftsAvailability-dev-wa01-app/providers/microsoft.insights/diagnosticSettings/setbypolicy\",\"name\":\"setbypolicy\",\"properties\":{\"logs\":[{\"category\":\"AppServiceAntivirusScanAuditLogs\",\"categoryGroup\":null,\"enabled\":true,\"retentionPolicy\":{\"days\":0,\"enabled\":false}},{\"category\":\"AppServiceHTTPLogs\",\"categoryGroup\":null,\"enabled\":true,\"retentionPolicy\":{\"days\":0,\"enabled\":false}},{\"category\":\"AppServiceConsoleLogs\",\"categoryGroup\":null,\"enabled\":true,\"retentionPolicy\":{\"days\":0,\"enabled\":false}},{\"category\":\"AppServiceAppLogs\",\"categoryGroup\":null,\"enabled\":true,\"retentionPolicy\":{\"days\":0,\"enabled\":false}},{\"category\":\"AppServiceFileAuditLogs\",\"categoryGroup\":null,\"enabled\":true,\"retentionPolicy\":{\"days\":0,\"enabled\":false}},{\"category\":\"AppServiceAuditLogs\",\"categoryGroup\":null,\"enabled\":true,\"retentionPolicy\":{\"days\":0,\"enabled\":false}},{\"category\":\"AppServiceIPSecAuditLogs\",\"categoryGroup\":null,\"enabled\":true,\"retentionPolicy\":{\"days\":0,\"enabled\":false}},{\"category\":\"AppServicePlatformLogs\",\"categoryGroup\":null,\"enabled\":true,\"retentionPolicy\":{\"days\":0,\"enabled\":false}},{\"category\":\"AppServiceAuthenticationLogs\",\"categoryGroup\":null,\"enabled\":true,\"retentionPolicy\":{\"days\":0,\"enabled\":false}}],\"metrics\":[{\"timeGrain\":null,\"enabled\":true,\"retentionPolicy\":{\"days\":0,\"enabled\":false},\"category\":\"AllMetrics\"}],\"workspaceId\":\"/subscriptions/76379826-f044-401f-a14c-ceaf710d52a7/resourcegroups/fg-mgmt/providers/microsoft.operationalinsights/workspaces/fg-law\",\"logAnalyticsDestinationType\":null}}
+{
+  "status": "Failed",
+  "error": {
+    "code": "DeploymentFailed",
+    "target": "/subscriptions/740b9a83-6f4a-4046-8439-40a060c5d64b/resourceGroups/FG-uks-dmz-prod-rgnet/providers/Microsoft.Resources/deployments/FrontDoor",
+    "message": "At least one resource deployment operation failed. Please list deployment operations for details. Please see https://aka.ms/arm-deployment-operations for usage details.",
+    "details": [
+      {
+        "code": "InvalidTemplate",
+        "message": "Unable to process template language expressions for resource '
+        /subscriptions/740b9a83-6f4a-4046-8439-40a060c5d64b/resourceGroups/FG-uks-dmz-prod-rgnet/providers/Microsoft.Resources/deployments/dev-teamschecklist-frasers-group-afdep'
+         at line '576' and column '5'. 'The language expression property 'customDomainName' doesn't exist, available properties are 'endpointName, routeName, cacheConfiguration, originPath, originForwardingProtocol, originGroupName'.'",
+        "additionalInfo": [
+          {
+            "type": "TemplateViolation",
+            "info": { "lineNumber": 576, "linePosition": 5, "path": "" }
+          }
+        ]
+      }
+    ]
+  }
+}
